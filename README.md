@@ -59,7 +59,7 @@ CI runs CPU checks only. GPU training and deployment are not part of CI.
 - [Publication provenance](docs/PUBLICATION.md)
 - [Contribution and review policy](docs/REVIEW_POLICY.md)
 
-Report compilation uses retained `report/figures/` assets and needs no external materials folder. For a full numeric report audit, set `SAC_EVIDENCE_ROOT` to your authenticated full extraction. The original `prepare â†’ freeze â†’ finalize` training protocol and all frozen scientific identifiers remain unchanged.
+Report compilation uses retained `report/figures/` assets and needs no external materials folder. For a full numeric report audit, set `SAC_EVIDENCE_ROOT` to your authenticated full extraction. The original `prepare -> freeze -> finalize` training protocol and all frozen scientific identifiers remain unchanged.
 
 ## Limitations and contribution record
 
