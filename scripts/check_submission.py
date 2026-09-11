@@ -16,14 +16,14 @@ def main():
         if p.suffix in ('.py','.md','.yml','.yaml','.toml','.txt','.tex'):
             text=p.read_text(encoding='utf-8')
             if re.search(r'(?<![A-Za-z0-9])(?:gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{50,}|-----BEGIN (?:RSA |OPENSSH )?PRIVATE KEY-----)',text):errors.append('Possible credential: '+str(rel))
-    for name in ['README.md','requirements.txt','src/sac_qutab/cli.py','configs/sac-campaign-v1.yaml']:
+    for name in ['requirements.txt','src/sac_qutab/cli.py','configs/sac-campaign-v1.yaml']:
         if not (ROOT/name).is_file():errors.append('Missing '+name)
     manifest=ROOT/'report/audit/canonical_assets.json'
     if manifest.exists():
         for rel,digest in json.loads(manifest.read_text()).items():
             if not (ROOT/'report'/rel).is_file() or sha(ROOT/'report'/rel)!=digest:errors.append('Canonical asset mismatch: '+rel)
     if args.final or args.complete:
-        for name in ['report/report.pdf','report/report.tex','presentation/presentation.pdf','contribution_report.pdf','.github/review_template.md','docs/evidence-manifest.json']:
+        for name in ['README.md','report/report.pdf','report/report.tex','presentation/presentation.pdf','contribution_report.pdf','.github/review_template.md','docs/evidence-manifest.json']:
             if not (ROOT/name).is_file():errors.append('Missing '+name)
         signoff=ROOT/'docs/contribution_signoff.json'
         if args.final and (not signoff.exists() or not json.loads(signoff.read_text()).get('all_members_agreed')): errors.append('Contribution assignment awaits all-member sign-off')
