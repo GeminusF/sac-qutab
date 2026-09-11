@@ -1,0 +1,509 @@
+{
+  "pdf_sha256": "cb8c1a281f6f5992d85b839c33f40be3c85d21764fd9ac6fd5e7f66abc505358",
+  "total_pages": 19,
+  "main_pages": 13,
+  "appendix_pages": 6,
+  "labels": {
+    "fig:framework": {
+      "number": "1",
+      "page": 3
+    },
+    "tab:split": {
+      "number": "I",
+      "page": 5
+    },
+    "tab:models": {
+      "number": "II",
+      "page": 6
+    },
+    "tab:clean": {
+      "number": "III",
+      "page": 7
+    },
+    "fig:prediction": {
+      "number": "2",
+      "page": 7
+    },
+    "tab:contrasts": {
+      "number": "IV",
+      "page": 8
+    },
+    "fig:representation": {
+      "number": "3",
+      "page": 8
+    },
+    "fig:scatter": {
+      "number": "4",
+      "page": 9
+    },
+    "tab:detectors": {
+      "number": "V",
+      "page": 9
+    },
+    "fig:detectors": {
+      "number": "5",
+      "page": 10
+    },
+    "fig:classes": {
+      "number": "6",
+      "page": 11
+    },
+    "tab:deviations": {
+      "number": "VI",
+      "page": 12
+    },
+    "fig:learning": {
+      "number": "7",
+      "page": 14
+    },
+    "fig:gallery1": {
+      "number": "8",
+      "page": 16
+    },
+    "fig:gallery2": {
+      "number": "9",
+      "page": 16
+    },
+    "fig:attention": {
+      "number": "10",
+      "page": 17
+    }
+  },
+  "source_anchors": [
+    {
+      "asset": "{{framework}}",
+      "source": "03_method.md",
+      "introducing_paragraph": "SAC-QUTAB compares each image with a deterministically transformed version of itself. Keeping the source fixed allows prediction and representation changes to be measured on matched inputs. Label consistency records whether the predicted class changes, probability-based metrics measure changes in the output distribution, and representation distance measures movement in feature space. Figure \\ref{fig:framework} shows how the four data partitions support these measurements. The term \"counterfactual\" refers to an image pair constructed for this benchmark; it does not imply a real-world causal intervention or verified preservation of scene semantics."
+    },
+    {
+      "asset": "{{split}}",
+      "source": "04_setup.md",
+      "introducing_paragraph": "The study uses EuroSAT RGB [@eurosat]: 27,000 labelled 64-by-64 patches covering ten land-use/land-cover classes. Table \\ref{tab:split} reports the counts in the dataset manifest. Class stratification maintains class coverage across partitions, while content grouping keeps detected duplicates together. The split seed is 20260831. Exact and perceptual duplicates are grouped using `content-dhash-bktree-v1`, with a difference-hash Hamming threshold of four."
+    },
+    {
+      "asset": "{{models}}",
+      "source": "04_setup.md",
+      "introducing_paragraph": "ResNet-50 and ViT-Small/16 are each trained with seeds 17, 29, and 43. Table \\ref{tab:models} specifies the variants and representation layers. Both use supervised ImageNet-1k initialization, with the original classification head replaced for ten EuroSAT classes. The ViT checkpoint is the AugReg variant [@augreg; @vitcard]; the ResNet checkpoint is the `tv_in1k` variant [@rescard]. Their pretraining recipes differ, so the model comparison includes both architecture and initialization effects."
+    },
+    {
+      "asset": "{{clean}}",
+      "source": "05_results.md",
+      "introducing_paragraph": "ResNet-50 achieves higher clean accuracy with less variation across seeds under the executed recipes. Mean final-test accuracy is 98.63% for ResNet-50 and 96.77% for ViT-Small/16, with sample SDs of 0.04 and 1.21 percentage points, respectively. Macro-F1 follows the same ordering (Table \\ref{tab:clean}). These clean scores provide the reference for measuring transformation effects."
+    },
+    {
+      "asset": "{{prediction}}",
+      "source": "05_results.md",
+      "introducing_paragraph": "Resolution reduction produces the largest deterioration on the tested dose grid. ResNet accuracy falls from 87.89% at mild reduction to 49.47% at moderate and 12.94% at severe reduction. ViT falls from 92.89% to 77.17% and 43.00%, respectively. ViT therefore retains higher accuracy at all three tested resolution levels despite its lower clean accuracy. Figure \\ref{fig:prediction} shows accuracy alongside JS divergence, separating label correctness from changes in the probability distribution."
+    },
+    {
+      "asset": "{{contrasts}}",
+      "source": "05_results.md",
+      "introducing_paragraph": "Table \\ref{tab:contrasts} reports severe-minus-mild effects for matched source images. ResNet's mean resolution JS increase is 0.5219 nats, a large change within the possible JS range of 0 to \\(\\log 2\\). Its RGB-gain and amplitude-mixing increases are much smaller. Label inconsistency, distributional change, and normalized feature change have different units, so their numerical magnitudes should be interpreted within each metric."
+    },
+    {
+      "asset": "{{representation}}",
+      "source": "05_results.md",
+      "introducing_paragraph": "Resolution reduction also produces the largest representation changes within each model (Figure \\ref{fig:representation}). At severe reduction, ResNet's mean raw cosine similarity is 0.3929 and its ECDF instability is 0.6202; ViT's corresponding values are 0.5550 and 0.0876. The lower ViT ECDF value places its displacement at a lower percentile of its own different-class control distribution. Because the reference distributions are model-specific, the percentiles do not equate absolute distances in the 384- and 2,048-dimensional spaces."
+    },
+    {
+      "asset": "{{scatter}}",
+      "source": "05_results.md",
+      "introducing_paragraph": "Figure \\ref{fig:scatter} relates confidence drop to normalized representation instability for individual pairs. Each panel contains 109,350 non-sham observations, pooling three seeds and nine conditions for 4,050 sources. In both models, a dense band near the ECDF floor spans a range of confidence changes. A low control percentile therefore does not determine the size of the confidence change. Sources appear repeatedly across seeds and conditions, so the points are dependent observations; the display does not support a causal interpretation."
+    },
+    {
+      "asset": "{{detectors}}",
+      "source": "05_results.md",
+      "introducing_paragraph": "Adding normalized representation instability improves both AP and AUROC in every model/seed comparison. Mean paired AP gains are 0.432 \u00b1 0.113 for ResNet and 0.402 \u00b1 0.032 for ViT. Mean paired AUROC gains are 0.166 \u00b1 0.087 and 0.114 \u00b1 0.023. The \u00b1 values are sample SDs across three seeds. Table \\ref{tab:detectors} gives all five score variants and the paired gains."
+    },
+    {
+      "asset": "{{detector_figure}}",
+      "source": "05_results.md",
+      "introducing_paragraph": "Figure \\ref{fig:detectors} shows the within-seed source-group bootstrap intervals for the paired gains. Every displayed interval lies above zero, although the twelve intervals do not provide simultaneous coverage."
+    },
+    {
+      "asset": "{{classes}}",
+      "source": "05_results.md",
+      "introducing_paragraph": "Figure \\ref{fig:classes} breaks down severe-condition label consistency by the ten original classes. Each cell averages the same three seeds and includes all final-test sources in the class, including clean errors. The denominator therefore differs from RQ3. The resolution columns show substantial variation across classes that is concealed by a single model mean. All classes are shown, and the cell differences are descriptive; no class-wise significance tests were performed."
+    },
+    {
+      "asset": "{{deviations}}",
+      "source": "06_discussion.md",
+      "introducing_paragraph": "Table \\ref{tab:deviations} records the main changes from the proposal and older template. Model variants, split roles, transformation definitions, and results follow the executed study. Optional spatial, masked-autoencoder, multispectral, and gamma extensions were not evaluated. The reporting repairs and visualization issue are documented separately in Appendix \\ref{app:provenance}."
+    }
+  ],
+  "prose_prefix_coverage": [
+    {
+      "source": "00_abstract.md",
+      "prefix": "Clean accuracy gives an incomplete account of a land-cover classifier's sensitivity to",
+      "present": true
+    },
+    {
+      "source": "01_introduction.md",
+      "prefix": "A land-cover classifier can score well on clean image patches and still",
+      "present": true
+    },
+    {
+      "source": "01_introduction.md",
+      "prefix": "EuroSAT provides a land-use/land-cover benchmark derived from Sentinel-2 imagery",
+      "present": true
+    },
+    {
+      "source": "01_introduction.md",
+      "prefix": "Semantic Analysis of Counterfactuals: Quality Under Transformations and Adaptive Benchmarking (SAC-QUTAB) studies",
+      "present": true
+    },
+    {
+      "source": "01_introduction.md",
+      "prefix": "The study provides a reproducible paired evaluation of the two trained systems.",
+      "present": true
+    },
+    {
+      "source": "01_introduction.md",
+      "prefix": "The comparison reveals a trade-off: ResNet-50 has higher mean clean accuracy, while",
+      "present": true
+    },
+    {
+      "source": "01_introduction.md",
+      "prefix": "The method and experimental setup define the paired measurements and the information",
+      "present": true
+    },
+    {
+      "source": "02_related_work.md",
+      "prefix": "Residual networks use skip connections to train deep convolutional models",
+      "present": true
+    },
+    {
+      "source": "02_related_work.md",
+      "prefix": "EuroSAT provides ten land-use/land-cover classes and 27,000 image patches",
+      "present": true
+    },
+    {
+      "source": "02_related_work.md",
+      "prefix": "Common-corruption benchmarks evaluate performance under image changes separately from clean accuracy",
+      "present": true
+    },
+    {
+      "source": "02_related_work.md",
+      "prefix": "Texture/shape cue-conflict experiments probe feature reliance by constructing images with conflicting cues",
+      "present": true
+    },
+    {
+      "source": "02_related_work.md",
+      "prefix": "Maximum-softmax confidence is an established baseline for detecting misclassified or out-of-distribution examples",
+      "present": true
+    },
+    {
+      "source": "02_related_work.md",
+      "prefix": "Linear centered kernel alignment (CKA) compares collections of hidden representations",
+      "present": true
+    },
+    {
+      "source": "02_related_work.md",
+      "prefix": "Attention rollout combines attention across layers to approximate how token information is",
+      "present": true
+    },
+    {
+      "source": "03_method.md",
+      "prefix": "SAC-QUTAB compares each image with a deterministically transformed version of itself. Keeping",
+      "present": true
+    },
+    {
+      "source": "03_method.md",
+      "prefix": "For RQ3, only clean-correct sources and the nine non-sham family--severity combinations are",
+      "present": true
+    },
+    {
+      "source": "03_method.md",
+      "prefix": "All interventions act on the native 64-by-64 RGB tensor, with pixel values",
+      "present": true
+    },
+    {
+      "source": "03_method.md",
+      "prefix": "The radius scales a fixed channel-gain vector; the vector is not normalized",
+      "present": true
+    },
+    {
+      "source": "03_method.md",
+      "prefix": "Severity orders doses within each family. The three families are not matched",
+      "present": true
+    },
+    {
+      "source": "03_method.md",
+      "prefix": "Each family includes a sham: zero gain radius, zero amplitude-mixing strength, or",
+      "present": true
+    },
+    {
+      "source": "03_method.md",
+      "prefix": "No human semantic-preservation review was performed. The frozen policy retained every predeclared",
+      "present": true
+    },
+    {
+      "source": "03_method.md",
+      "prefix": "The predictive-distribution response is Jensen--Shannon (JS) divergence using natural logarithms:",
+      "present": true
+    },
+    {
+      "source": "03_method.md",
+      "prefix": "Raw representation similarity is cosine similarity",
+      "present": true
+    },
+    {
+      "source": "03_method.md",
+      "prefix": "A different-class reference distribution places each displacement on a model-specific scale. For",
+      "present": true
+    },
+    {
+      "source": "03_method.md",
+      "prefix": "Fitting the mapping on validation data gives calibration and final test a",
+      "present": true
+    },
+    {
+      "source": "03_method.md",
+      "prefix": "Linear centered kernel alignment (CKA) is an auxiliary statistic for comparing sets",
+      "present": true
+    },
+    {
+      "source": "03_method.md",
+      "prefix": "RQ3 tests the additional information provided by representation displacement. The output-only detector",
+      "present": true
+    },
+    {
+      "source": "03_method.md",
+      "prefix": "Both detectors standardize their input features using calibration-partition means and standard deviations,",
+      "present": true
+    },
+    {
+      "source": "03_method.md",
+      "prefix": "Three unlearned scores provide context: transformed uncertainty, transformed entropy, and normalized representation",
+      "present": true
+    },
+    {
+      "source": "04_setup.md",
+      "prefix": "Training contains 16,200 images; validation and final test each contain 4,050; calibration",
+      "present": true
+    },
+    {
+      "source": "04_setup.md",
+      "prefix": "Final-test sources form 4,050 distinct content-based groups. Validation also has 4,050 groups;",
+      "present": true
+    },
+    {
+      "source": "04_setup.md",
+      "prefix": "ResNet-50 and ViT-Small/16 are each trained with seeds 17, 29, and 43.",
+      "present": true
+    },
+    {
+      "source": "04_setup.md",
+      "prefix": "All backbone parameters are fine-tuned. The common training recipe uses AdamW, weight",
+      "present": true
+    },
+    {
+      "source": "04_setup.md",
+      "prefix": "Training augmentation consists of deterministic horizontal and vertical flips, each with probability",
+      "present": true
+    },
+    {
+      "source": "04_setup.md",
+      "prefix": "The selected checkpoints occurred at one-based epochs 39, 48, and 42 for",
+      "present": true
+    },
+    {
+      "source": "04_setup.md",
+      "prefix": "ResNet training ran on an NVIDIA H100 80GB, whereas ViT training ran",
+      "present": true
+    },
+    {
+      "source": "04_setup.md",
+      "prefix": "Before final-test evaluation, SHA-256 digests recorded the six checkpoints, run configurations, pair",
+      "present": true
+    },
+    {
+      "source": "04_setup.md",
+      "prefix": "Report generation required a vocabulary repair, and a later audit identified incorrect",
+      "present": true
+    },
+    {
+      "source": "04_setup.md",
+      "prefix": "The primary within-model contrasts subtract mild from severe responses for label inconsistency,",
+      "present": true
+    },
+    {
+      "source": "04_setup.md",
+      "prefix": "The primary statistics use 2,000 source-group bootstrap replicates and percentile 95% CIs,",
+      "present": true
+    },
+    {
+      "source": "04_setup.md",
+      "prefix": "The cross-model normalized-instability contrast is the ViT severe-minus-mild effect minus the ResNet",
+      "present": true
+    },
+    {
+      "source": "04_setup.md",
+      "prefix": "The implementation applies Holm correction over configured model-pair contrasts within each seed/family,",
+      "present": true
+    },
+    {
+      "source": "04_setup.md",
+      "prefix": "Some stored Wilcoxon p-values are numerically zero and are reported as",
+      "present": true
+    },
+    {
+      "source": "05_results.md",
+      "prefix": "ResNet-50 achieves higher clean accuracy with less variation across seeds under the",
+      "present": true
+    },
+    {
+      "source": "05_results.md",
+      "prefix": "ResNet's mean expected calibration error (ECE) is 0.0080, versus 0.0116 for ViT,",
+      "present": true
+    },
+    {
+      "source": "05_results.md",
+      "prefix": "ViT seed 17 attains 98.15% clean accuracy, while seeds 29 and 43",
+      "present": true
+    },
+    {
+      "source": "05_results.md",
+      "prefix": "Resolution reduction produces the largest deterioration on the tested dose grid. ResNet",
+      "present": true
+    },
+    {
+      "source": "05_results.md",
+      "prefix": "ResNet retains the advantage under the other two families. Under severe RGB",
+      "present": true
+    },
+    {
+      "source": "05_results.md",
+      "prefix": "The lowest dose can also produce a small accuracy increase. Mean mild",
+      "present": true
+    },
+    {
+      "source": "05_results.md",
+      "prefix": "Resolution reduction also produces the largest representation changes within each model (Figure",
+      "present": true
+    },
+    {
+      "source": "05_results.md",
+      "prefix": "Under resolution reduction, the paired increase in normalized instability is 0.6131 \u00b1",
+      "present": true
+    },
+    {
+      "source": "05_results.md",
+      "prefix": "Severe RGB gains illustrate why normalized feature stability and prediction stability can",
+      "present": true
+    },
+    {
+      "source": "05_results.md",
+      "prefix": "The scatter includes initially incorrect predictions. RQ3 restricts evaluation to initially correct",
+      "present": true
+    },
+    {
+      "source": "05_results.md",
+      "prefix": "Adding normalized representation instability improves both AP and AUROC in every model/seed",
+      "present": true
+    },
+    {
+      "source": "05_results.md",
+      "prefix": "The eligible population comprises 35,937--35,964 pairs per ResNet seed and 34,956--35,775 per",
+      "present": true
+    },
+    {
+      "source": "05_results.md",
+      "prefix": "The representation-only score achieves mean AP of approximately 0.918 for ResNet and",
+      "present": true
+    },
+    {
+      "source": "05_results.md",
+      "prefix": "The ResNet output baseline varies substantially across seeds: its AUROC is 0.765,",
+      "present": true
+    },
+    {
+      "source": "05_results.md",
+      "prefix": "The pooled detector task gives each source one pair in each of",
+      "present": true
+    },
+    {
+      "source": "05_results.md",
+      "prefix": "Sham conditions retain label consistency of one across all six runs, confirming",
+      "present": true
+    },
+    {
+      "source": "06_discussion.md",
+      "prefix": "The model ranking depends on the change applied to the image. ResNet's",
+      "present": true
+    },
+    {
+      "source": "06_discussion.md",
+      "prefix": "Several factors could contribute to the observed ordering. The models differ in",
+      "present": true
+    },
+    {
+      "source": "06_discussion.md",
+      "prefix": "The absence of human review limits the interpretation of prediction changes. Full-spectrum",
+      "present": true
+    },
+    {
+      "source": "06_discussion.md",
+      "prefix": "Information loss is an alternative explanation to shortcut reliance, especially under severe",
+      "present": true
+    },
+    {
+      "source": "06_discussion.md",
+      "prefix": "The positive within-run gains support adding normalized feature displacement to transformed uncertainty",
+      "present": true
+    },
+    {
+      "source": "06_discussion.md",
+      "prefix": "The need for a clean reference image restricts the evaluated detector to",
+      "present": true
+    },
+    {
+      "source": "06_discussion.md",
+      "prefix": "Content-based grouping addresses the exact and near-duplicate relationships defined by the implementation",
+      "present": true
+    },
+    {
+      "source": "06_discussion.md",
+      "prefix": "Seed SD describes dispersion across trained runs, while per-seed source-group bootstrap CIs",
+      "present": true
+    },
+    {
+      "source": "06_discussion.md",
+      "prefix": "Human review of label preservation on a prespecified sample would clarify the",
+      "present": true
+    },
+    {
+      "source": "07_closing.md",
+      "prefix": "The report package contains editable English sections, LaTeX tables, figures, generation scripts,",
+      "present": true
+    },
+    {
+      "source": "07_closing.md",
+      "prefix": "Reproduction requires different resources at each level. Rebuilding the document uses the",
+      "present": true
+    },
+    {
+      "source": "07_closing.md",
+      "prefix": "The project repository cited in the abstract provides the public reproducibility entry",
+      "present": true
+    },
+    {
+      "source": "07_closing.md",
+      "prefix": "On the tested EuroSAT RGB transformations, neither model has the highest accuracy",
+      "present": true
+    },
+    {
+      "source": "07_closing.md",
+      "prefix": "For clean-correct, non-sham pairs, adding normalized representation instability to transformed uncertainty and",
+      "present": true
+    },
+    {
+      "source": "07_closing.md",
+      "prefix": "The experiment artifacts record use of PyTorch, torchvision, timm, NumPy, SciPy, scikit-learn,",
+      "present": true
+    }
+  ],
+  "missing_prose_prefixes": [],
+  "unresolved_reference_markers": false,
+  "original_framework_preserved": true
+}

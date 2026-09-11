@@ -1,0 +1,3 @@
+clean_accuracy_percent,clean_ece,detector_delta_auroc,mean_cosine_similarity,min_s_label,min_s_label_condition,model,model_id,params_m,seed_count
+98.62551440329219,0.007988297608163622,0.16588192320550635,0.8604675944212287,0.12946502057613168,resolution:severe,ResNet-50,resnet50,23.528522,3
+96.76543209876543,0.011579380938055127,0.11373685493184656,0.8949023497247457,0.4328395061728395,resolution:severe,ViT-Small/16,vit_small_patch16_224,21.669514,3

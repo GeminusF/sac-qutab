@@ -1,0 +1,64 @@
+{
+  "empty_is_valid": true,
+  "rows": [
+    {
+      "clean_confidence": 0.9999985694885254,
+      "clean_prediction": "PermanentCrop",
+      "family": "spectral_appearance",
+      "model": "resnet50",
+      "pair_id": "43dd553b8e5ac64875a0da8db95c777a0c4ccb7beee96669dc46b88d881eec68",
+      "run": "resnet50-seed29",
+      "seed": 29,
+      "severity": "mild",
+      "source_id": "c2a8cb60270fee2d4f10a754325582a5c2efb4ee8c923fd3f496fcea72fa964a",
+      "transformed_confidence": 0.6910889744758606,
+      "transformed_prediction": "HerbaceousVegetation",
+      "true_class": "PermanentCrop"
+    },
+    {
+      "clean_confidence": 0.9999922513961792,
+      "clean_prediction": "HerbaceousVegetation",
+      "family": "spectral_appearance",
+      "model": "vit_small_patch16_224",
+      "pair_id": "70b6fc0226c23da482d541e893906a2d05f67626d9ece12eb556090872889420",
+      "run": "vit_small_patch16_224-seed17",
+      "seed": 17,
+      "severity": "mild",
+      "source_id": "3f41a00a30b2c89fb40caf712fac0f7a9fc4ddc6cb8a87a13391671cd6d1dc6f",
+      "transformed_confidence": 0.8562577962875366,
+      "transformed_prediction": "PermanentCrop",
+      "true_class": "HerbaceousVegetation"
+    },
+    {
+      "clean_confidence": 0.9999773502349854,
+      "clean_prediction": "HerbaceousVegetation",
+      "family": "spectral_appearance",
+      "model": "vit_small_patch16_224",
+      "pair_id": "3df74e2767f4952ddfd14a167d0f044abb4e37172883031c3327977323e23f1d",
+      "run": "vit_small_patch16_224-seed17",
+      "seed": 17,
+      "severity": "mild",
+      "source_id": "bf74c6ebb18ff0b9d5224c27c1852f4f70ed451b350381f42bbef930bb01e23e",
+      "transformed_confidence": 0.9454749226570129,
+      "transformed_prediction": "PermanentCrop",
+      "true_class": "HerbaceousVegetation"
+    },
+    {
+      "clean_confidence": 0.9999769926071167,
+      "clean_prediction": "PermanentCrop",
+      "family": "spectral_appearance",
+      "model": "resnet50",
+      "pair_id": "9c630c47471d72897a622b1808292d7bf844ef934f917ffa3cf05382f7fdee1d",
+      "run": "resnet50-seed29",
+      "seed": 29,
+      "severity": "mild",
+      "source_id": "bfe7376241f9eb4232aa4e4b1b7eedade77062fb1fe8e6ede7daf9aebf5d1b50",
+      "transformed_confidence": 0.8279154300689697,
+      "transformed_prediction": "HerbaceousVegetation",
+      "true_class": "PermanentCrop"
+    }
+  ],
+  "schema_version": "sac-qualitative-failure-gallery-v1",
+  "selected_count": 4,
+  "selection": "audit-qualified mild spectral/texture counterfactual failure with clean confidence >= 0.99; deterministic top four unique sources"
+}

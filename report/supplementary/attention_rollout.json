@@ -1,0 +1,13 @@
+{
+  "claim_boundary": "Attention rollout is descriptive and is not causal feature attribution.",
+  "rows": [
+    {
+      "defined": true,
+      "method": "CLS-to-patch rollout from recomputed timm qkv attention; head-mean with residual normalization",
+      "model": "vit_small_patch16_224",
+      "pair_id": "70b6fc0226c23da482d541e893906a2d05f67626d9ece12eb556090872889420",
+      "run": "vit_small_patch16_224-seed17"
+    }
+  ],
+  "schema_version": "sac-attention-rollout-v1"
+}
