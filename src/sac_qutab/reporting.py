@@ -221,7 +221,7 @@ def generate_report_artifacts(
         sources.append({
             "directory": str(directory), "provenance_sha256": sha256_file(provenance_path),
             "metrics_sha256": sha256_file(metrics_path), "pairs_sha256": sha256_file(pair_path),
-            "representations_sha256": sha256_file(representations_path),
+            "representations_sha256": sha256_file(directory / "representations.npz"),
             "evaluation_index_sha256": sha256_file(directory / "evaluation_index.json"),
             "detector_sha256": sha256_file(detector_path),
         })
