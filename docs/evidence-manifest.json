@@ -1,0 +1,153 @@
+{
+  "schema": "sac-headline-evidence-v1",
+  "release_url": "https://github.com/GeminusF/sac-qutab/releases/download/v1.0-final",
+  "files": {
+    "freezes/experiment.json": {
+      "bytes": 73463,
+      "sha256": "cd20ca70be0619e87b2422fa99f7601c9b86578e06475f15a385903c9ed134a9"
+    },
+    "evaluations/resnet50-seed17/final_test/pair_metrics.jsonl": {
+      "bytes": 95914786,
+      "sha256": "46d9ced3c86b6228af51470caec94f6e2eba7b15ce758cc3e57139836e2f53f0"
+    },
+    "evaluations/resnet50-seed17/final_test/detector_metrics.json": {
+      "bytes": 23543050,
+      "sha256": "33a1063d7de32cc51621cdb459f5e7b20e6494b7d10477c8b0f8edcb2646d555"
+    },
+    "evaluations/resnet50-seed17/final_test/evaluation_index.json": {
+      "bytes": 507,
+      "sha256": "d27a956f7aa5826b657d40393462df8b390e3dd0f69b471a63ffc53c50d52a3a"
+    },
+    "evaluations/resnet50-seed17/final_test/provenance.json": {
+      "bytes": 1420,
+      "sha256": "34a3532289df97ce53191cd132f904d29d29b96918e54c15b423ddce2196aa2f"
+    },
+    "detectors/resnet50-seed17.json": {
+      "bytes": 1902701,
+      "sha256": "35ec797671905f62e7f7da0286c86baf04ba03466bb91aa1fdaa501969a29a85"
+    },
+    "evaluations/resnet50-seed29/final_test/pair_metrics.jsonl": {
+      "bytes": 95726975,
+      "sha256": "382e49aa1397cc6e0e4e5622ae62518ae9fb482d320331b870ec711dd818c447"
+    },
+    "evaluations/resnet50-seed29/final_test/detector_metrics.json": {
+      "bytes": 23477680,
+      "sha256": "5e72d739ef29b822504297ef5c213bf6a7f66d4ddf35780063632a9ab22cf11c"
+    },
+    "evaluations/resnet50-seed29/final_test/evaluation_index.json": {
+      "bytes": 507,
+      "sha256": "3c2af9bb094060abbd5b79fc7b46abebaec3b26cfd89984b5431ce49ccaba8ce"
+    },
+    "evaluations/resnet50-seed29/final_test/provenance.json": {
+      "bytes": 1420,
+      "sha256": "f539ec9a55eb34e4cc65670b2210748e507c7fed5044031061ac05b4407784b7"
+    },
+    "detectors/resnet50-seed29.json": {
+      "bytes": 1899141,
+      "sha256": "edda235961b8801062f6af195d1ff31395701ab6b046eff109255d96f3d86f06"
+    },
+    "evaluations/resnet50-seed43/final_test/pair_metrics.jsonl": {
+      "bytes": 95784648,
+      "sha256": "173fef58a4998bc51439bdfad6a7924b89b816e9f260279f7908deb744b0cb4f"
+    },
+    "evaluations/resnet50-seed43/final_test/detector_metrics.json": {
+      "bytes": 23492144,
+      "sha256": "c7e6dbd4e81ce4d65792a89943b9fdf8ea78165bdc5aa6984bb60ebfaa94a408"
+    },
+    "evaluations/resnet50-seed43/final_test/evaluation_index.json": {
+      "bytes": 507,
+      "sha256": "4cbe5ffbb5e110f06da94cda2916059d7aa56f29c893cc59937fe8e12dde13ba"
+    },
+    "evaluations/resnet50-seed43/final_test/provenance.json": {
+      "bytes": 1420,
+      "sha256": "3c92a408aee565a5dd21c74d962783db403b0ea10b7f1493c9b1d9871c892abb"
+    },
+    "detectors/resnet50-seed43.json": {
+      "bytes": 1900570,
+      "sha256": "4b6cee360307987b6810ce13fd2e7af94ad05fabcf0f5cbd9733038c7264c0c8"
+    },
+    "evaluations/vit_small_patch16_224-seed17/final_test/pair_metrics.jsonl": {
+      "bytes": 96349373,
+      "sha256": "1a956e98ba3a7215aedfcd2bb622bd0aa26ba8705dee5a78aea7ca47b238af84"
+    },
+    "evaluations/vit_small_patch16_224-seed17/final_test/detector_metrics.json": {
+      "bytes": 23432234,
+      "sha256": "b3d10de9def163769b5bec28bd37100190d58f7096607d3aeae2004e3f117721"
+    },
+    "evaluations/vit_small_patch16_224-seed17/final_test/evaluation_index.json": {
+      "bytes": 507,
+      "sha256": "dcfa3ff43530e972be57dbff79ba0f3a4ea155f62d6ec7987329d3c4da96073a"
+    },
+    "evaluations/vit_small_patch16_224-seed17/final_test/provenance.json": {
+      "bytes": 1435,
+      "sha256": "44f3ad93b44e74dbd0def04bb08a6885a54778f2dd1df0531d73faa3a373b338"
+    },
+    "detectors/vit_small_patch16_224-seed17.json": {
+      "bytes": 1889212,
+      "sha256": "a65d74bdac121535f8d6cb495475bb8bffbb6ccf8815911ece3a97971fbf2f2f"
+    },
+    "evaluations/vit_small_patch16_224-seed29/final_test/pair_metrics.jsonl": {
+      "bytes": 96157035,
+      "sha256": "d66ff7dd17bf888b8400fa7271d9c6634089a942d8c2ed5f5d2beb8c10546ad5"
+    },
+    "evaluations/vit_small_patch16_224-seed29/final_test/detector_metrics.json": {
+      "bytes": 22925489,
+      "sha256": "80ac68a9a17afdfe829218c503d3ac50cd044841d9809953a4f5b4e9c67b8df0"
+    },
+    "evaluations/vit_small_patch16_224-seed29/final_test/evaluation_index.json": {
+      "bytes": 507,
+      "sha256": "df3e58ac5a33f568cf79b67f67510949f7c0508d3e5ff1bbb9a2d4cc1cfc0a18"
+    },
+    "evaluations/vit_small_patch16_224-seed29/final_test/provenance.json": {
+      "bytes": 1434,
+      "sha256": "cb39618205f404e9ca5163d4f6b20e835e43dd2573e7fe9febdea798d57b4356"
+    },
+    "detectors/vit_small_patch16_224-seed29.json": {
+      "bytes": 1859341,
+      "sha256": "fb5ea36231b0bbc673bd531b790add5d0178bb566141b8b2366c32a5f1517f5d"
+    },
+    "evaluations/vit_small_patch16_224-seed43/final_test/pair_metrics.jsonl": {
+      "bytes": 96049945,
+      "sha256": "27bc780348635f1b6e379ca7185a5c3db230e65d17a570ffd9b581ae6611936e"
+    },
+    "evaluations/vit_small_patch16_224-seed43/final_test/detector_metrics.json": {
+      "bytes": 22811279,
+      "sha256": "88aeffa515e7bf3363ffa5f79a0f6e57780faf129aeabbaab631025644824732"
+    },
+    "evaluations/vit_small_patch16_224-seed43/final_test/evaluation_index.json": {
+      "bytes": 507,
+      "sha256": "9ae4a22c68b8b4380e61cc3103668822050d2da0ffd3ffa36220073c052ee4ce"
+    },
+    "evaluations/vit_small_patch16_224-seed43/final_test/provenance.json": {
+      "bytes": 1434,
+      "sha256": "01db7ee1e4ae505424f3ccef09dd532758561a459c312bfc6b5c2665298b5aad"
+    },
+    "detectors/vit_small_patch16_224-seed43.json": {
+      "bytes": 1854369,
+      "sha256": "b384303accf66a7df142911ebefed96f7b70edb60f1c6a99f7f791cb71073fe2"
+    }
+  },
+  "archives": [
+    {
+      "name": "headline.tar.gz.part000",
+      "bytes": 140646262,
+      "sha256": "b8066d6b8b10e7bb2ffd59817c4deb5e209955ed2e034deab2ae85a16f47cb16"
+    }
+  ],
+  "expected_headlines": {
+    "resnet50": {
+      "clean_accuracy_pct": 98.62551440329219,
+      "clean_accuracy_sd_pp": 0.037716672386474574,
+      "severe_resolution_accuracy_pct": 12.938271604938272,
+      "AP_gain": 0.43171817907696886,
+      "AP_gain_SD": 0.11325920395789381
+    },
+    "vit_small_patch16_224": {
+      "clean_accuracy_pct": 96.76543209876543,
+      "clean_accuracy_sd_pp": 1.209876543209877,
+      "severe_resolution_accuracy_pct": 42.99588477366255,
+      "AP_gain": 0.4021462050765901,
+      "AP_gain_SD": 0.032233725324388764
+    }
+  }
+}
