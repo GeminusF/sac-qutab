@@ -1,0 +1,234 @@
+{
+  "protocol_sha256": "cd20ca70be0619e87b2422fa99f7601c9b86578e06475f15a385903c9ed134a9",
+  "statistics_sha256": "04b3ee5d1f84158acc2458130aea69b101ca5fc9d32533b9015e42bbfc6eb0c1",
+  "split": {
+    "class_counts": {
+      "calibration": [
+        300,
+        300,
+        300,
+        250,
+        250,
+        200,
+        250,
+        300,
+        250,
+        300
+      ],
+      "final_test": [
+        450,
+        450,
+        450,
+        375,
+        375,
+        300,
+        375,
+        450,
+        375,
+        450
+      ],
+      "train": [
+        1800,
+        1800,
+        1800,
+        1500,
+        1500,
+        1200,
+        1500,
+        1800,
+        1500,
+        1800
+      ],
+      "validation": [
+        450,
+        450,
+        450,
+        375,
+        375,
+        300,
+        375,
+        450,
+        375,
+        450
+      ]
+    },
+    "counts": {
+      "calibration": 2700,
+      "final_test": 4050,
+      "train": 16200,
+      "validation": 4050
+    },
+    "fractions": {
+      "calibration": 0.1,
+      "final_test": 0.15,
+      "train": 0.6,
+      "validation": 0.15
+    },
+    "group_counts": {
+      "calibration": 2692,
+      "final_test": 4050,
+      "train": 15246,
+      "validation": 4050
+    },
+    "grouping_version": "content-dhash-bktree-v1",
+    "manifest_sha256": "aa110365b4ad49a955680e1f8972eccd5a199946a3327f2e6a78cca0d78ced9a",
+    "schema_version": "sac-splits-v1",
+    "seed": 20260831
+  },
+  "runs": [
+    {
+      "run": "resnet50-seed17",
+      "hashes": {
+        "metrics.json": "bc34ba105dda3e79ddbd0e226bf0369db1db6bb2ed55aeb7870638a2b6b80a24",
+        "provenance.json": "34a3532289df97ce53191cd132f904d29d29b96918e54c15b423ddce2196aa2f",
+        "pair_metrics.jsonl": "46d9ced3c86b6228af51470caec94f6e2eba7b15ce758cc3e57139836e2f53f0",
+        "representations.npz": "9203db1dd6d6b6bc592fd34dca2dfce28f0a2159ac27564ff581733e49e3df00",
+        "evaluation_index.json": "d27a956f7aa5826b657d40393462df8b390e3dd0f69b471a63ffc53c50d52a3a",
+        "detector_metrics.json": "33a1063d7de32cc51621cdb459f5e7b20e6494b7d10477c8b0f8edcb2646d555"
+      },
+      "pair_count": 48600,
+      "source_count": 4050,
+      "source_group_count": 4050,
+      "representation_shape": [
+        48600,
+        2048
+      ],
+      "rq3_count": 35964,
+      "rq3_positives": 6493,
+      "verified": true
+    },
+    {
+      "run": "resnet50-seed29",
+      "hashes": {
+        "metrics.json": "3d50bb04d9790dc00dcd7a3bf005b1a4be963f163606432d7fa3386b421333ba",
+        "provenance.json": "f539ec9a55eb34e4cc65670b2210748e507c7fed5044031061ac05b4407784b7",
+        "pair_metrics.jsonl": "382e49aa1397cc6e0e4e5622ae62518ae9fb482d320331b870ec711dd818c447",
+        "representations.npz": "da9e0df498487e708400d38c1b2bf189161b3157b62621d589bb8101112130f1",
+        "evaluation_index.json": "3c2af9bb094060abbd5b79fc7b46abebaec3b26cfd89984b5431ce49ccaba8ce",
+        "detector_metrics.json": "5e72d739ef29b822504297ef5c213bf6a7f66d4ddf35780063632a9ab22cf11c"
+      },
+      "pair_count": 48600,
+      "source_count": 4050,
+      "source_group_count": 4050,
+      "representation_shape": [
+        48600,
+        2048
+      ],
+      "rq3_count": 35937,
+      "rq3_positives": 6666,
+      "verified": true
+    },
+    {
+      "run": "resnet50-seed43",
+      "hashes": {
+        "metrics.json": "a736c044f02d9e5ceecd9018ff6f535819927ca40baec0bf1be062803d993f66",
+        "provenance.json": "3c92a408aee565a5dd21c74d962783db403b0ea10b7f1493c9b1d9871c892abb",
+        "pair_metrics.jsonl": "173fef58a4998bc51439bdfad6a7924b89b816e9f260279f7908deb744b0cb4f",
+        "representations.npz": "36d702bf711e8e7dae6efe7084c33644b75b90277d734a2f7463e1532bd0a2dd",
+        "evaluation_index.json": "4cbe5ffbb5e110f06da94cda2916059d7aa56f29c893cc59937fe8e12dde13ba",
+        "detector_metrics.json": "c7e6dbd4e81ce4d65792a89943b9fdf8ea78165bdc5aa6984bb60ebfaa94a408"
+      },
+      "pair_count": 48600,
+      "source_count": 4050,
+      "source_group_count": 4050,
+      "representation_shape": [
+        48600,
+        2048
+      ],
+      "rq3_count": 35946,
+      "rq3_positives": 6568,
+      "verified": true
+    },
+    {
+      "run": "vit_small_patch16_224-seed17",
+      "hashes": {
+        "metrics.json": "6ab0fdaf66a7446baad17ead694d0737efd21760916194b251c36e32f7857edf",
+        "provenance.json": "44f3ad93b44e74dbd0def04bb08a6885a54778f2dd1df0531d73faa3a373b338",
+        "pair_metrics.jsonl": "1a956e98ba3a7215aedfcd2bb622bd0aa26ba8705dee5a78aea7ca47b238af84",
+        "representations.npz": "b9a0a4eba986ed93b44bfd30305e0d5315f4f64ff06f25ed26ee0d6b2a01b045",
+        "evaluation_index.json": "dcfa3ff43530e972be57dbff79ba0f3a4ea155f62d6ec7987329d3c4da96073a",
+        "detector_metrics.json": "b3d10de9def163769b5bec28bd37100190d58f7096607d3aeae2004e3f117721"
+      },
+      "pair_count": 48600,
+      "source_count": 4050,
+      "source_group_count": 4050,
+      "representation_shape": [
+        48600,
+        384
+      ],
+      "rq3_count": 35775,
+      "rq3_positives": 3684,
+      "verified": true
+    },
+    {
+      "run": "vit_small_patch16_224-seed29",
+      "hashes": {
+        "metrics.json": "d1f6dce010a8234a3af8e93c6273484b144072b4fd3b47b3adbdd2425d8a1043",
+        "provenance.json": "cb39618205f404e9ca5163d4f6b20e835e43dd2573e7fe9febdea798d57b4356",
+        "pair_metrics.jsonl": "d66ff7dd17bf888b8400fa7271d9c6634089a942d8c2ed5f5d2beb8c10546ad5",
+        "representations.npz": "9728b35b21a5136e7138f8497edeb67816918ba833281e63f621bb8445764b85",
+        "evaluation_index.json": "df3e58ac5a33f568cf79b67f67510949f7c0508d3e5ff1bbb9a2d4cc1cfc0a18",
+        "detector_metrics.json": "80ac68a9a17afdfe829218c503d3ac50cd044841d9809953a4f5b4e9c67b8df0"
+      },
+      "pair_count": 48600,
+      "source_count": 4050,
+      "source_group_count": 4050,
+      "representation_shape": [
+        48600,
+        384
+      ],
+      "rq3_count": 35082,
+      "rq3_positives": 4602,
+      "verified": true
+    },
+    {
+      "run": "vit_small_patch16_224-seed43",
+      "hashes": {
+        "metrics.json": "05c55085bb336f5ee381e38c8d311ee6f7a7ab578d0eb1b365cfbe81071785b3",
+        "provenance.json": "01db7ee1e4ae505424f3ccef09dd532758561a459c312bfc6b5c2665298b5aad",
+        "pair_metrics.jsonl": "27bc780348635f1b6e379ca7185a5c3db230e65d17a570ffd9b581ae6611936e",
+        "representations.npz": "0589166dfcb6eb09ce504fccc69d36e0f1fc8eac799ddfdf8fec4b3a03529b8f",
+        "evaluation_index.json": "9ae4a22c68b8b4380e61cc3103668822050d2da0ffd3ffa36220073c052ee4ce",
+        "detector_metrics.json": "88aeffa515e7bf3363ffa5f79a0f6e57780faf129aeabbaab631025644824732"
+      },
+      "pair_count": 48600,
+      "source_count": 4050,
+      "source_group_count": 4050,
+      "representation_shape": [
+        48600,
+        384
+      ],
+      "rq3_count": 34956,
+      "rq3_positives": 4150,
+      "verified": true
+    }
+  ],
+  "historical_report_index_anomaly": [
+    {
+      "run": "resnet50-seed17",
+      "reported": "0589166dfcb6eb09ce504fccc69d36e0f1fc8eac799ddfdf8fec4b3a03529b8f",
+      "actual": "9203db1dd6d6b6bc592fd34dca2dfce28f0a2159ac27564ff581733e49e3df00"
+    },
+    {
+      "run": "resnet50-seed29",
+      "reported": "0589166dfcb6eb09ce504fccc69d36e0f1fc8eac799ddfdf8fec4b3a03529b8f",
+      "actual": "da9e0df498487e708400d38c1b2bf189161b3157b62621d589bb8101112130f1"
+    },
+    {
+      "run": "resnet50-seed43",
+      "reported": "0589166dfcb6eb09ce504fccc69d36e0f1fc8eac799ddfdf8fec4b3a03529b8f",
+      "actual": "36d702bf711e8e7dae6efe7084c33644b75b90277d734a2f7463e1532bd0a2dd"
+    },
+    {
+      "run": "vit_small_patch16_224-seed17",
+      "reported": "0589166dfcb6eb09ce504fccc69d36e0f1fc8eac799ddfdf8fec4b3a03529b8f",
+      "actual": "b9a0a4eba986ed93b44bfd30305e0d5315f4f64ff06f25ed26ee0d6b2a01b045"
+    },
+    {
+      "run": "vit_small_patch16_224-seed29",
+      "reported": "0589166dfcb6eb09ce504fccc69d36e0f1fc8eac799ddfdf8fec4b3a03529b8f",
+      "actual": "9728b35b21a5136e7138f8497edeb67816918ba833281e63f621bb8445764b85"
+    }
+  ],
+  "method": "direct file hashing and independent recomputation from saved outputs; no inference"
+}

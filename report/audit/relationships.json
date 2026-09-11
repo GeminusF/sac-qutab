@@ -1,0 +1,128 @@
+[
+  {
+    "run": "resnet50-seed17",
+    "family": "resolution",
+    "spearman_js_ecdf": 0.8462189638523503,
+    "count": 12150,
+    "analysis": "post-hoc descriptive, correlated severity rows"
+  },
+  {
+    "run": "resnet50-seed17",
+    "family": "spectral_appearance",
+    "spearman_js_ecdf": 0.42064868419773066,
+    "count": 12150,
+    "analysis": "post-hoc descriptive, correlated severity rows"
+  },
+  {
+    "run": "resnet50-seed17",
+    "family": "texture",
+    "spearman_js_ecdf": 0.40107458867204704,
+    "count": 12150,
+    "analysis": "post-hoc descriptive, correlated severity rows"
+  },
+  {
+    "run": "resnet50-seed29",
+    "family": "resolution",
+    "spearman_js_ecdf": 0.8997733911243371,
+    "count": 12150,
+    "analysis": "post-hoc descriptive, correlated severity rows"
+  },
+  {
+    "run": "resnet50-seed29",
+    "family": "spectral_appearance",
+    "spearman_js_ecdf": 0.35501090014295483,
+    "count": 12150,
+    "analysis": "post-hoc descriptive, correlated severity rows"
+  },
+  {
+    "run": "resnet50-seed29",
+    "family": "texture",
+    "spearman_js_ecdf": 0.32810893105708616,
+    "count": 12150,
+    "analysis": "post-hoc descriptive, correlated severity rows"
+  },
+  {
+    "run": "resnet50-seed43",
+    "family": "resolution",
+    "spearman_js_ecdf": 0.8409724922100312,
+    "count": 12150,
+    "analysis": "post-hoc descriptive, correlated severity rows"
+  },
+  {
+    "run": "resnet50-seed43",
+    "family": "spectral_appearance",
+    "spearman_js_ecdf": 0.30938034246078144,
+    "count": 12150,
+    "analysis": "post-hoc descriptive, correlated severity rows"
+  },
+  {
+    "run": "resnet50-seed43",
+    "family": "texture",
+    "spearman_js_ecdf": 0.2982369242089469,
+    "count": 12150,
+    "analysis": "post-hoc descriptive, correlated severity rows"
+  },
+  {
+    "run": "vit_small_patch16_224-seed17",
+    "family": "resolution",
+    "spearman_js_ecdf": 0.8388561760545453,
+    "count": 12150,
+    "analysis": "post-hoc descriptive, correlated severity rows"
+  },
+  {
+    "run": "vit_small_patch16_224-seed17",
+    "family": "spectral_appearance",
+    "spearman_js_ecdf": 0.5875217298085066,
+    "count": 12150,
+    "analysis": "post-hoc descriptive, correlated severity rows"
+  },
+  {
+    "run": "vit_small_patch16_224-seed17",
+    "family": "texture",
+    "spearman_js_ecdf": 0.39780857283801097,
+    "count": 12150,
+    "analysis": "post-hoc descriptive, correlated severity rows"
+  },
+  {
+    "run": "vit_small_patch16_224-seed29",
+    "family": "resolution",
+    "spearman_js_ecdf": 0.8465198735432763,
+    "count": 12150,
+    "analysis": "post-hoc descriptive, correlated severity rows"
+  },
+  {
+    "run": "vit_small_patch16_224-seed29",
+    "family": "spectral_appearance",
+    "spearman_js_ecdf": 0.6182392636493682,
+    "count": 12150,
+    "analysis": "post-hoc descriptive, correlated severity rows"
+  },
+  {
+    "run": "vit_small_patch16_224-seed29",
+    "family": "texture",
+    "spearman_js_ecdf": 0.4035262044866431,
+    "count": 12150,
+    "analysis": "post-hoc descriptive, correlated severity rows"
+  },
+  {
+    "run": "vit_small_patch16_224-seed43",
+    "family": "resolution",
+    "spearman_js_ecdf": 0.853935930303955,
+    "count": 12150,
+    "analysis": "post-hoc descriptive, correlated severity rows"
+  },
+  {
+    "run": "vit_small_patch16_224-seed43",
+    "family": "spectral_appearance",
+    "spearman_js_ecdf": 0.48529001673951777,
+    "count": 12150,
+    "analysis": "post-hoc descriptive, correlated severity rows"
+  },
+  {
+    "run": "vit_small_patch16_224-seed43",
+    "family": "texture",
+    "spearman_js_ecdf": 0.41309693310577217,
+    "count": 12150,
+    "analysis": "post-hoc descriptive, correlated severity rows"
+  }
+]

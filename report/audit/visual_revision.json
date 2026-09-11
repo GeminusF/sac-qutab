@@ -1,0 +1,278 @@
+{
+  "sources": [
+    {
+      "run": "resnet50-seed17",
+      "pair_sha256": "46d9ced3c86b6228af51470caec94f6e2eba7b15ce758cc3e57139836e2f53f0"
+    },
+    {
+      "run": "resnet50-seed29",
+      "pair_sha256": "382e49aa1397cc6e0e4e5622ae62518ae9fb482d320331b870ec711dd818c447"
+    },
+    {
+      "run": "resnet50-seed43",
+      "pair_sha256": "173fef58a4998bc51439bdfad6a7924b89b816e9f260279f7908deb744b0cb4f"
+    },
+    {
+      "run": "vit_small_patch16_224-seed17",
+      "pair_sha256": "1a956e98ba3a7215aedfcd2bb622bd0aa26ba8705dee5a78aea7ca47b238af84"
+    },
+    {
+      "run": "vit_small_patch16_224-seed29",
+      "pair_sha256": "d66ff7dd17bf888b8400fa7271d9c6634089a942d8c2ed5f5d2beb8c10546ad5"
+    },
+    {
+      "run": "vit_small_patch16_224-seed43",
+      "pair_sha256": "27bc780348635f1b6e379ca7185a5c3db230e65d17a570ffd9b581ae6611936e"
+    }
+  ],
+  "scatter_counts": {
+    "resnet50": 109350,
+    "vit_small_patch16_224": 109350
+  },
+  "heatmap": {
+    "classes": [
+      "AnnualCrop",
+      "Forest",
+      "HerbaceousVegetation",
+      "Highway",
+      "Industrial",
+      "Pasture",
+      "PermanentCrop",
+      "Residential",
+      "River",
+      "SeaLake"
+    ],
+    "families": [
+      "resolution",
+      "spectral_appearance",
+      "texture"
+    ],
+    "values": [
+      [
+        0.4296296296296296,
+        0.9666666666666667,
+        0.9562962962962963,
+        0.9125925925925925,
+        0.9348148148148149,
+        0.9207407407407407
+      ],
+      [
+        0.0007407407407407407,
+        0.9318518518518518,
+        0.997037037037037,
+        0.042222222222222223,
+        0.9355555555555556,
+        0.977037037037037
+      ],
+      [
+        0.0,
+        0.8733333333333334,
+        0.9266666666666667,
+        0.4725925925925926,
+        0.782962962962963,
+        0.9103703703703703
+      ],
+      [
+        0.0017777777777777776,
+        0.8782222222222223,
+        0.9422222222222222,
+        0.4968888888888889,
+        0.7857777777777778,
+        0.904888888888889
+      ],
+      [
+        0.0,
+        0.9022222222222221,
+        0.9706666666666667,
+        0.4115555555555555,
+        0.8115555555555556,
+        0.952
+      ],
+      [
+        0.0022222222222222222,
+        0.9511111111111111,
+        0.9722222222222222,
+        0.27111111111111114,
+        0.8755555555555555,
+        0.9655555555555555
+      ],
+      [
+        0.006222222222222222,
+        0.8542222222222223,
+        0.9644444444444445,
+        0.03288888888888889,
+        0.7413333333333334,
+        0.9431111111111111
+      ],
+      [
+        0.0,
+        0.9318518518518518,
+        0.9918518518518518,
+        0.0,
+        0.9088888888888889,
+        0.9933333333333333
+      ],
+      [
+        0.022222222222222223,
+        0.976,
+        0.7413333333333334,
+        0.6213333333333334,
+        0.8826666666666666,
+        0.7946666666666666
+      ],
+      [
+        0.7081481481481481,
+        0.9881481481481481,
+        0.96,
+        0.9851851851851853,
+        0.9785185185185185,
+        0.9562962962962963
+      ]
+    ],
+    "scale": [
+      0,
+      1
+    ]
+  },
+  "gallery_selection_replayed": true,
+  "gallery_inputs_hash_verified": true,
+  "gallery_labels_verified": true,
+  "gallery_rows": [
+    {
+      "clean_confidence": 0.9999985694885254,
+      "clean_prediction": "PermanentCrop",
+      "family": "spectral_appearance",
+      "model": "resnet50",
+      "pair_id": "43dd553b8e5ac64875a0da8db95c777a0c4ccb7beee96669dc46b88d881eec68",
+      "run": "resnet50-seed29",
+      "seed": 29,
+      "severity": "mild",
+      "source_id": "c2a8cb60270fee2d4f10a754325582a5c2efb4ee8c923fd3f496fcea72fa964a",
+      "transformed_confidence": 0.6910889744758606,
+      "transformed_prediction": "HerbaceousVegetation",
+      "true_class": "PermanentCrop",
+      "source_sha256": "9eb94058e28c1edf10285eaba5a76ed209e15fea77b10ab3da025b3fca3a173e",
+      "cache_sha256": "7fb6344df5288d2c461400a7af72615ef67680fc983e1882197b5721372cf8ca",
+      "source_path": "PermanentCrop/PermanentCrop_1649.jpg"
+    },
+    {
+      "clean_confidence": 0.9999922513961792,
+      "clean_prediction": "HerbaceousVegetation",
+      "family": "spectral_appearance",
+      "model": "vit_small_patch16_224",
+      "pair_id": "70b6fc0226c23da482d541e893906a2d05f67626d9ece12eb556090872889420",
+      "run": "vit_small_patch16_224-seed17",
+      "seed": 17,
+      "severity": "mild",
+      "source_id": "3f41a00a30b2c89fb40caf712fac0f7a9fc4ddc6cb8a87a13391671cd6d1dc6f",
+      "transformed_confidence": 0.8562577962875366,
+      "transformed_prediction": "PermanentCrop",
+      "true_class": "HerbaceousVegetation",
+      "source_sha256": "3c6358cb429207c865d378ba0fa1f9455a1bdbe10c0b1e6dd3365caf08f0dc6f",
+      "cache_sha256": "bce8b7e45efaf06d32dac4731cde1089679a4d33f4ddaff42f2c5af90af8ff3d",
+      "source_path": "HerbaceousVegetation/HerbaceousVegetation_1953.jpg"
+    },
+    {
+      "clean_confidence": 0.9999773502349854,
+      "clean_prediction": "HerbaceousVegetation",
+      "family": "spectral_appearance",
+      "model": "vit_small_patch16_224",
+      "pair_id": "3df74e2767f4952ddfd14a167d0f044abb4e37172883031c3327977323e23f1d",
+      "run": "vit_small_patch16_224-seed17",
+      "seed": 17,
+      "severity": "mild",
+      "source_id": "bf74c6ebb18ff0b9d5224c27c1852f4f70ed451b350381f42bbef930bb01e23e",
+      "transformed_confidence": 0.9454749226570129,
+      "transformed_prediction": "PermanentCrop",
+      "true_class": "HerbaceousVegetation",
+      "source_sha256": "0a2758976f4b51bf81270715d5844ba8f0327bcc217ef89b86e26d8cb7b9c5eb",
+      "cache_sha256": "2412bcda958f783f3a763e04dc4c8c30982b076e70a981362de0e53c105f6abb",
+      "source_path": "HerbaceousVegetation/HerbaceousVegetation_1305.jpg"
+    },
+    {
+      "clean_confidence": 0.9999769926071167,
+      "clean_prediction": "PermanentCrop",
+      "family": "spectral_appearance",
+      "model": "resnet50",
+      "pair_id": "9c630c47471d72897a622b1808292d7bf844ef934f917ffa3cf05382f7fdee1d",
+      "run": "resnet50-seed29",
+      "seed": 29,
+      "severity": "mild",
+      "source_id": "bfe7376241f9eb4232aa4e4b1b7eedade77062fb1fe8e6ede7daf9aebf5d1b50",
+      "transformed_confidence": 0.8279154300689697,
+      "transformed_prediction": "HerbaceousVegetation",
+      "true_class": "PermanentCrop",
+      "source_sha256": "853c8b2f3fc763e221c56983b0d36c4df30d7896e3687ae44dc32f1696a4c55e",
+      "cache_sha256": "617e4822a2a10573417144bd0423e7751ef454f84479444c337b2b540e23c5d8",
+      "source_path": "PermanentCrop/PermanentCrop_1840.jpg"
+    }
+  ],
+  "logos": [
+    {
+      "file": "AZCON_logo.png",
+      "original_sha256": "0703dd0dda33ec0f1f1673ab26f72e4dec6eef3dc929bc3c525f6a88f87f51ab",
+      "alpha_bbox": [
+        0,
+        0,
+        4816,
+        1472
+      ],
+      "alpha_threshold_for_bounds": 1,
+      "trimmed_size": [
+        4816,
+        1472
+      ],
+      "trimmed_sha256": "3b2c55cc7e3b611ccfca13d0f64731f47f93cd11fba676b78e8995c7b783e589"
+    },
+    {
+      "file": "naic_logo.png",
+      "original_sha256": "3f409de0850be54ff2d6c85be4f702124a441ddf1acac7ed2004982920511421",
+      "alpha_bbox": [
+        0,
+        1,
+        252,
+        87
+      ],
+      "alpha_threshold_for_bounds": 1,
+      "trimmed_size": [
+        252,
+        88
+      ],
+      "trimmed_sha256": "3f409de0850be54ff2d6c85be4f702124a441ddf1acac7ed2004982920511421"
+    },
+    {
+      "file": "academy_logo.png",
+      "original_sha256": "5fa6cc4c557dd768670c210178371d3763ee11589194c392dd83b1945d8ad084",
+      "alpha_bbox": [
+        0,
+        0,
+        316,
+        80
+      ],
+      "alpha_threshold_for_bounds": 1,
+      "trimmed_size": [
+        318,
+        80
+      ],
+      "trimmed_sha256": "5fa6cc4c557dd768670c210178371d3763ee11589194c392dd83b1945d8ad084"
+    },
+    {
+      "file": "sac_qutab_logo.png",
+      "original_sha256": "5285bc3f80dee466265f3da2ebcd45ece4205f3036a23e1e495d9c9db27d3877",
+      "alpha_bbox": [
+        0,
+        1,
+        1289,
+        1207
+      ],
+      "alpha_threshold_for_bounds": 1,
+      "trimmed_size": [
+        1289,
+        1206
+      ],
+      "trimmed_sha256": "636a42f76432e972fe1233f429465e317f7fcf012fbcf0433e49dbad5f6f365c"
+    }
+  ],
+  "archive": "C:\\Users\\fereh\\Downloads\\sac-qutab-backup\\sac-qutab-full-migration-backup.tar",
+  "neural_inference": false
+}

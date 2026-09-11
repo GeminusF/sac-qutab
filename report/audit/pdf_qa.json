@@ -1,0 +1,49 @@
+{
+  "status": "PASSED_WITH_DISCLOSED_LIMITS",
+  "compiler": "Tectonic 0.17.0",
+  "compiled": true,
+  "pdf": "report.pdf",
+  "pdf_sha256": "cb8c1a281f6f5992d85b839c33f40be3c85d21764fd9ac6fd5e7f66abc505358",
+  "total_pages": 19,
+  "main_pages_including_references": 13,
+  "appendix_first_page": 14,
+  "appendix_pages": 6,
+  "page_size": "Letter (612 x 792 pt)",
+  "visually_checked_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "unresolved_reference_markers": false,
+  "missing_or_unembedded_fonts": false,
+  "clipped_or_overlapping_content": false,
+  "minimum_figure_font_requirement_met": false,
+  "main_page_target_met": false,
+  "disclosed_limits": [
+    "Unchanged Figure 1 has approximately 7 pt source text, approximately 5.3 pt at the approved placement. The 8 pt floor is unmet.",
+    "Main report including references is 13 pages; the 10\u00e2\u20ac\u201c12 page target is unmet. Body fonts and scientific content were not reduced."
+  ],
+  "blocking_layout_defects": false,
+  "nonblocking_warnings": [
+    "Tectonic substituted available Times-compatible text font shapes for unavailable TU/ptm shapes.",
+    "Several narrow IEEE columns produced underfull box warnings; no content was clipped or overlapped.",
+    "Necessary page boundaries retain modest space before indivisible full-width figures on pages 2 and 10."
+  ],
+  "notes": "Publication rebuild: inspected all 19 pages in a rendered contact sheet and pages 1, 12 and 13 individually. Updated repository reference and publication baseline wording. Canonical figures unchanged. Existing small Figure 1 font and 13-page main text limitations remain."
+}

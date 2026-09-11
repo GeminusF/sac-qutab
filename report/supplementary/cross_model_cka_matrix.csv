@@ -1,0 +1,2 @@
+defined,left_model,mean_linear_cka,per_seed,reason,right_model,sample_basis
+True,resnet50,0.8261634496231722,"[0.8190951928180636, 0.8343986651912148, 0.8249964908602382]",,vit_small_patch16_224,one_clean_representation_per_source_id_and_matching_training_seed
