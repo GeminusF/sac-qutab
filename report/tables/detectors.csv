@@ -1,0 +1,15 @@
+Model,Score / paired gain,AP,AUROC
+ResNet-50,Confidence,0.513 $\pm$ 0.102,0.819 $\pm$ 0.084
+ResNet-50,Entropy,0.513 $\pm$ 0.105,0.818 $\pm$ 0.085
+ResNet-50,Output only,0.507 $\pm$ 0.107,0.818 $\pm$ 0.085
+ResNet-50,Output + representation,0.939 $\pm$ 0.006,0.983 $\pm$ 0.001
+ResNet-50,Representation only,0.918 $\pm$ 0.008,0.966 $\pm$ 0.005
+ResNet-50,$\Delta$ AP,0.432 $\pm$ 0.113,--
+ResNet-50,$\Delta$ AUROC,--,0.166 $\pm$ 0.087
+ViT-Small/16,Confidence,0.489 $\pm$ 0.028,0.867 $\pm$ 0.027
+ViT-Small/16,Entropy,0.498 $\pm$ 0.029,0.869 $\pm$ 0.026
+ViT-Small/16,Output only,0.496 $\pm$ 0.028,0.869 $\pm$ 0.026
+ViT-Small/16,Output + representation,0.898 $\pm$ 0.020,0.983 $\pm$ 0.007
+ViT-Small/16,Representation only,0.878 $\pm$ 0.032,0.955 $\pm$ 0.017
+ViT-Small/16,$\Delta$ AP,0.402 $\pm$ 0.032,--
+ViT-Small/16,$\Delta$ AUROC,--,0.114 $\pm$ 0.023

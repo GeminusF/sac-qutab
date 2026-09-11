@@ -1,0 +1,174 @@
+% Figure 1: five-lane SAC-QUTAB workflow, sized to 8.5 cm.
+%
+% Preamble requirements:
+%   \usepackage{tikz}
+%   \usetikzlibrary{positioning,shapes.geometric,arrows.meta,fit,calc,
+%                   backgrounds,shadows.blur}
+%
+% Revision summary relative to the earlier five-lane draft:
+%   1. Lane 3 is split into checkpoint-selection and ECDF/detector tracks.
+%   2. Frozen checkpoints, control ECDF and calibration pairs enter the
+%      detector through separate north, west and south anchors.
+%   3. Solid blue, dashed gray and dash-dot orange arrows distinguish data,
+%      metadata and frozen-policy flow in color and in grayscale.
+%   4. Long node labels were shortened; split counts and protocol detail
+%      moved to the caption.
+%   5. A vector lock and a heavy outline emphasize the protocol freeze.
+%   6. Lane fills are limited to five-percent tints, and all visible text is
+%      at least 8 pt. The drawing uses one TikZ picture and no external art.
+
+\begin{figure}[t]
+\centering
+\definecolor{dataBlue}{HTML}{0072B2}
+\definecolor{metaGray}{HTML}{666666}
+\definecolor{policyOrange}{HTML}{D98200}
+
+\begin{tikzpicture}[
+  x=1cm,
+  y=1cm,
+  font=\fontsize{8}{9}\selectfont,
+  lane/.style={draw=black!45, line width=.35pt, rounded corners=1.2pt},
+  lane label/.style={font=\fontsize{8}{9}\selectfont\bfseries,
+    align=center, text width=1.45cm, inner sep=.4pt},
+  process/.style={draw=black!68, fill=white, line width=.45pt,
+    rounded corners=1.4pt, align=center, inner sep=1.2pt,
+    minimum height=.52cm, text width=1.28cm},
+  compact/.style={process, text width=.70cm, minimum height=.45cm,
+    inner sep=.6pt},
+  partition/.style={draw=black!68, fill=white, line width=.45pt,
+    align=center, minimum width=1.12cm, minimum height=.54cm,
+    inner sep=.6pt},
+  data set/.style={process, trapezium, trapezium left angle=72,
+    trapezium right angle=108, text width=1.08cm},
+  artifact/.style={process, draw=policyOrange, line width=.65pt,
+    text width=1.20cm},
+  freeze/.style={process, draw=policyOrange, fill=policyOrange!8,
+    line width=1.15pt, text width=1.62cm, minimum height=.68cm,
+    font=\fontsize{8}{9}\selectfont\bfseries},
+  rq/.style={process, text width=1.52cm, minimum height=.60cm},
+  data flow/.style={-{Stealth[length=1.65mm,width=1.18mm]},
+    draw=dataBlue, line width=.78pt, rounded corners=1.2pt},
+  metadata flow/.style={-{Latex[length=1.55mm,width=1.02mm]},
+    draw=metaGray, line width=.46pt, densely dashed, rounded corners=1.2pt},
+  policy flow/.style={-{Triangle[length=1.65mm,width=1.18mm]},
+    draw=policyOrange, line width=.58pt,
+    dash pattern=on 2.1pt off 1.1pt on .45pt off 1.1pt,
+    rounded corners=1.2pt},
+  pics/lock/.style={code={
+    \draw[policyOrange, line width=.45pt, rounded corners=.25pt]
+      (-.105,-.075) rectangle (.105,.085);
+    \draw[policyOrange, line width=.45pt]
+      (-.070,.085) -- (-.070,.145)
+      arc[start angle=180,end angle=0,x radius=.070,y radius=.080]
+      -- (.070,.085);
+    \fill[policyOrange] (0,-.005) circle[radius=.018];
+  }}
+]
+
+% A fixed bounding box prevents accidental growth beyond the 8.5 cm column.
+\path[use as bounding box] (0,0) rectangle (8.5,9.18);
+
+% Flow legend. Line pattern and arrowhead retain the distinction in grayscale.
+\draw[data flow] (.35,8.91) -- (1.02,8.91);
+\node[anchor=west] at (1.10,8.91) {data};
+\draw[metadata flow] (2.45,8.91) -- (3.12,8.91);
+\node[anchor=west] at (3.20,8.91) {metadata};
+\draw[policy flow] (5.02,8.91) -- (5.69,8.91);
+\node[anchor=west] at (5.77,8.91) {frozen policy};
+
+% Lane backgrounds and label separators.
+\begin{scope}[on background layer]
+  \filldraw[lane, fill=dataBlue!5]      (.05,7.38) rectangle (8.45,8.62);
+  \filldraw[lane, fill=metaGray!5]      (.05,5.90) rectangle (8.45,7.18);
+  \filldraw[lane, fill=dataBlue!5]      (.05,3.06) rectangle (8.45,5.70);
+  \filldraw[lane, fill=policyOrange!5]  (.05,1.62) rectangle (8.45,2.86);
+  \filldraw[lane, fill=metaGray!5]      (.05,.10) rectangle (8.45,1.42);
+  \foreach \ya/\yb in {7.38/8.62,5.90/7.18,3.06/5.70,1.62/2.86,.10/1.42}
+    \draw[black!38, line width=.35pt] (1.62,\ya) -- (1.62,\yb);
+\end{scope}
+
+\node[lane label] at (.82,8.00) {Data\\partitioning};
+\node[lane label] at (.82,6.54) {Model\\training};
+\node[lane label] at (.82,4.38) {Validation \&\\calibration};
+\node[lane label] at (.82,2.24) {Frozen\\evaluation};
+\node[lane label] at (.82,.76) {Analysis};
+
+% Lane 1: a segmented bar shows the four mutually exclusive partitions.
+\node[data set, text width=1.08cm] (eurosat) at (2.25,8.00) {EuroSAT\\RGB};
+\node[partition, rounded corners=1.4pt] (train) at (3.62,8.00) {Train};
+\node[partition] (val) at (4.78,8.00) {Val.};
+\node[partition] (cal) at (5.94,8.00) {Cal.};
+\node[partition, rounded corners=1.4pt] (test) at (7.10,8.00) {Test};
+\node[font=\fontsize{8}{9}\selectfont, anchor=south] at (5.36,8.31)
+  {4-way split};
+
+\draw[data flow] (eurosat) -- (train.west);
+
+% Lane 2: training produces six candidate checkpoints.
+\node[process, text width=1.38cm] (resnet) at (2.40,6.54) {ResNet-50\\3 seeds};
+\node[process, text width=1.42cm] (vit) at (4.55,6.54) {ViT-Small/16\\3 seeds};
+\node[artifact, text width=1.30cm] (checkpoints) at (6.95,6.54) {6 Checkpoints};
+
+\draw[data flow] (train.south) -- ++(0,-.36) -| (resnet.north);
+\draw[data flow] (train.south) -- ++(0,-.36) -| (vit.north);
+\draw[data flow] (resnet.north) -- ++(0,.20) -| (checkpoints.north);
+\draw[data flow] (vit.east) -- (checkpoints.west);
+
+% Lane 3, Track A: validation-guided checkpoint selection.
+\node[data set, text width=1.18cm] (valset) at (2.26,5.12) {Validation\\set};
+\node[process, text width=1.42cm] (selection) at (4.40,5.12) {Checkpoint\\selection};
+\node[artifact, text width=1.38cm] (frozenckpt) at (6.80,5.12) {Frozen\\checkpoints};
+
+\draw[data flow] (valset) -- (selection);
+\draw[metadata flow] (checkpoints.south) -- ++(0,-.18) -| (selection.north);
+\draw[policy flow] (selection) -- (frozenckpt);
+\draw[data flow] (val.south) -- ++(0,-.18) -| (5.42,5.61)
+  -- (2.26,5.61) -- (valset.north);
+
+% Lane 3, Track B: control normalization and detector fitting.
+\node[process, text width=1.42cm] (controls) at (3.10,4.16) {Different-class\\controls};
+\node[process, text width=1.26cm] (ecdf) at (5.08,4.16) {Control ECDF\\fitting};
+\node[process, text width=1.38cm, minimum height=.66cm] (detector) at (7.22,4.16)
+  {Nested detector\\fitting};
+
+\draw[data flow] (valset.south) -- ++(0,-.18) |- (controls.west);
+\draw[metadata flow] (controls) -- (ecdf);
+\draw[metadata flow] (ecdf) -- (detector.west);
+\draw[policy flow] (frozenckpt.south) -- ++(0,-.15) -| (detector.north);
+
+% Calibration enters the detector on an independent lower route.
+\node[data set, text width=1.26cm] (calset) at (2.30,3.42) {Calibration\\set};
+\node[process, text width=1.35cm] (calpairs) at (5.08,3.42) {Calibration\\pairs};
+\draw[data flow] (cal.south) -- (5.94,3.12) -| (calset.south);
+\draw[data flow] (calset) -- (calpairs);
+\draw[data flow] (calpairs.east) -- ++(.18,0) -| (detector.south);
+
+% Lane 4: fitted artifacts are frozen before the held-out test is evaluated.
+\node[freeze] (freeze) at (2.72,2.24) {PROTOCOL\\FREEZE};
+\pic at ($(freeze.north west)+(.18,-.18)$) {lock};
+\node[process, text width=1.58cm, minimum height=.66cm] (finaleval) at (5.20,2.24)
+  {Final Test\\(9 doses + 3 shams)};
+\node[process, text width=1.74cm, minimum height=.66cm] (paired) at (7.30,2.24)
+  {Paired outputs \&\\representations};
+
+\draw[policy flow] (detector.south) -- (7.22,2.96) -| (freeze.north);
+\draw[policy flow] (freeze) -- (finaleval);
+\draw[data flow] (test.east) -- (8.30,8.00) -- (8.30,2.78)
+  -- (5.20,2.78) -- (finaleval.north);
+\draw[data flow] (finaleval) -- (paired);
+
+% Lane 5: the same paired outputs answer all three research questions.
+\node[rq, text width=1.58cm] (rq1) at (2.35,.76) {RQ1\\Prediction sensitivity};
+\node[rq, text width=1.70cm] (rq2) at (4.82,.76) {RQ2\\Representation\\stability};
+\node[rq, text width=1.58cm] (rq3) at (7.20,.76) {RQ3\\Failure detection};
+
+\coordinate (analysisfork) at (7.30,1.52);
+\draw[data flow] (paired.south) -- (analysisfork);
+\draw[data flow] (analysisfork) -| (rq1.north);
+\draw[data flow] (analysisfork) -| (rq2.north);
+\draw[data flow] (analysisfork) -| (rq3.north);
+
+\end{tikzpicture}
+\caption{Five-lane SAC-QUTAB workflow. EuroSAT is partitioned by content group into 16,200 training, 4,050 validation, 2,700 calibration and 4,050 final-test images. ResNet-50 and ViT-Small/16 are trained with seeds 17, 29 and 43, producing six checkpoint candidates. Validation selects checkpoints and defines model-specific different-class control ECDFs. Calibration fits the nested failure detectors from calibration pairs, frozen checkpoints and ECDF-normalized representation displacement. The protocol is then frozen before evaluating nine non-sham doses and three identity shams per final-test source. Solid blue arrows carry image or paired-example data, dashed gray arrows carry metadata, and orange dash-dot arrows carry frozen artifacts or policy.}
+\label{fig:framework}
+\end{figure}

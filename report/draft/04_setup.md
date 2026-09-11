@@ -1,0 +1,43 @@
+# Experimental Setup {#sec:setup}
+
+## Dataset and four-way split
+
+The study uses EuroSAT RGB [@eurosat]: 27,000 labelled 64-by-64 patches covering ten land-use/land-cover classes. Table \ref{tab:split} reports the counts in the dataset manifest. Class stratification maintains class coverage across partitions, while content grouping keeps detected duplicates together. The split seed is 20260831. Exact and perceptual duplicates are grouped using `content-dhash-bktree-v1`, with a difference-hash Hamming threshold of four.
+
+{{split}}
+
+Training contains 16,200 images; validation and final test each contain 4,050; calibration contains 2,700. Each partition has a defined role. Training updates model weights and supplies same-class amplitude-mixing donors. Validation selects checkpoints and fits the different-class-control ECDF. Calibration fits the failure detectors. Final test measures performance after those choices are fixed. Checkpoint selection and control normalization share one validation partition, while detector fitting and evaluation use separate data.
+
+Final-test sources form 4,050 distinct content-based groups. Validation also has 4,050 groups; calibration has 2,692 and training has 15,246. Grouping prevents the defined exact and near-duplicate relationships from crossing partitions. It does not provide a country-, acquisition-, or region-held-out evaluation. Class counts range from 300 to 450 in final test; Appendix \ref{app:counts} gives the full allocation. Each final-test source supplies three families with four levels per family, including sham. The resulting 48,600 stored pairs per model/seed contain 36,450 non-sham pairs before the clean-correct filter.
+
+## Models, pretraining, and optimization
+
+ResNet-50 and ViT-Small/16 are each trained with seeds 17, 29, and 43. Table \ref{tab:models} specifies the variants and representation layers. Both use supervised ImageNet-1k initialization, with the original classification head replaced for ten EuroSAT classes. The ViT checkpoint is the AugReg variant [@augreg; @vitcard]; the ResNet checkpoint is the `tv_in1k` variant [@rescard]. Their pretraining recipes differ, so the model comparison includes both architecture and initialization effects.
+
+{{models}}
+
+All backbone parameters are fine-tuned. The common training recipe uses AdamW, weight decay 0.05, effective global batch size 64, a per-device batch of 32 and two gradient-accumulation steps on one device. Learning rates are \(3\times10^{-4}\) for ResNet-50 and \(5\times10^{-4}\) for ViT-Small/16. The schedule has two warm-up epochs followed by cosine decay toward 0.01 times the initial learning rate. Training is capped at 50 epochs. Checkpoint selection maximizes validation macro-F1 with minimum improvement 0.0001 and early-stopping patience ten epochs.
+
+Training augmentation consists of deterministic horizontal and vertical flips, each with probability 0.5. There is no intervention-based augmentation, label smoothing, or frozen backbone in this executed recipe. Native tensors are resized and ImageNet-normalized as described in Section \ref{sec:method}. Mixed precision resolved to bfloat16. Deterministic configuration and recorded seeds improve repeatability, but do not imply bitwise equality across different devices and software versions.
+
+The selected checkpoints occurred at one-based epochs 39, 48, and 42 for ResNet-50, and 38, 12, and 5 for ViT-Small/16. All six runs enter the comparison, preserving the observed variability of each training recipe. Final-test outcomes were not used to restart or tune the runs.
+
+## Hardware and frozen evaluation
+
+ResNet training ran on an NVIDIA H100 80GB, whereas ViT training ran on an NVIDIA A100-SXM4-40GB MIG 3g.20gb instance. Their recorded training software also differs: PyTorch 2.13.0/CUDA 13.0 for ResNet and PyTorch 2.6.0+cu124 for ViT. Training wall times therefore cannot establish relative architectural efficiency. Final inference used the frozen A100 preflight configuration. The supporting audit retains the per-run metadata and checkpoint identifiers.
+
+Before final-test evaluation, SHA-256 digests recorded the six checkpoints, run configurations, pair manifests, condition-selection policy, validation ECDFs, and calibration detectors. These identifiers allow later checks that the evaluated inputs match the frozen choices. All models and seeds use the same pair manifest. The active two-model campaign retains the base configuration identifier needed to trace the earlier ResNet runs.
+
+Report generation required a vocabulary repair, and a later audit identified incorrect representation hashes in five historical report-index entries. The underlying six evaluation files were checked against their own indices and statistical sources before preparing the figures. Appendix \ref{app:provenance} records both incidents and the separate attention-visualization issue; original evaluations remain unchanged.
+
+## Statistical estimands and uncertainty
+
+The primary within-model contrasts subtract mild from severe responses for label inconsistency, JS divergence, and normalized representation instability. Matching source images within each family measures the dose response on a fixed sample. Positive values mean greater instability at the severe setting. The three seed-level effects are summarized by their mean and sample standard deviation (SD, denominator \(n-1\)). SD describes variation across trained runs. The bootstrap confidence intervals (CIs) below quantify a different source of uncertainty: variation from resampling the evaluated source groups.
+
+The primary statistics use 2,000 source-group bootstrap replicates and percentile 95% CIs, with base seed 20260901 and deterministic offsets. All conditions from a sampled source group remain together because transformed versions of the same image are related observations. For RQ3, both detectors use the same resampled clean-correct groups, preserving the paired comparison. The intervals are conditional on the trained model and fitted detector. They exclude variation from detector refitting, a new calibration set, or a new geographical split.
+
+The cross-model normalized-instability contrast is the ViT severe-minus-mild effect minus the ResNet effect, matched on source and training-seed identifier. A negative value indicates a smaller dose response for ViT on this normalized scale. The aggregate pairwise result averages over the three families and frozen seeds and uses a two-level bootstrap that resamples training seeds and source groups. Only three seeds provide evidence about training variability, limiting the interpretation of this interval beyond the observed runs.
+
+The implementation applies Holm correction over configured model-pair contrasts within each seed/family, and separately over the aggregate model-pair summaries. Only one model pair is active, so each correction family contains one test. The procedure does not jointly correct across all families, seeds, or RQ3 intervals. A separate exploratory family contains 36 defined group-wise Wilcoxon tests across six runs, three families, and two metrics, with Benjamini--Hochberg false-discovery-rate level 0.05. Class-wise summaries are descriptive and are outside both test families.
+
+Some stored Wilcoxon p-values are numerically zero and are reported as \(p<0.001\), alongside effect sizes and uncertainty intervals. The supplementary within-run JS--ECDF correlations are post-hoc descriptive summaries of saved outputs and are separate from the primary tests. These summaries can be reproduced from the saved outputs without new training or final-test inference.

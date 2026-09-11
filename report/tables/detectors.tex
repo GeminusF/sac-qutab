@@ -1,0 +1,14 @@
+\begin{tabular}{lrrrr}
+\toprule
+& \multicolumn{2}{c}{ResNet-50} & \multicolumn{2}{c}{ViT-Small/16} \\
+Score / paired gain & AP & AUROC & AP & AUROC \\
+\midrule
+Confidence & 0.513 $\pm$ 0.102 & 0.819 $\pm$ 0.084 & 0.489 $\pm$ 0.028 & 0.867 $\pm$ 0.027 \\
+Entropy & 0.513 $\pm$ 0.105 & 0.818 $\pm$ 0.085 & 0.498 $\pm$ 0.029 & 0.869 $\pm$ 0.026 \\
+Output only & 0.507 $\pm$ 0.107 & 0.818 $\pm$ 0.085 & 0.496 $\pm$ 0.028 & 0.869 $\pm$ 0.026 \\
+Output + representation & \textbf{0.939 $\pm$ 0.006} & \textbf{0.983 $\pm$ 0.001} & \textbf{0.898 $\pm$ 0.020} & \textbf{0.983 $\pm$ 0.007} \\
+Representation only & 0.918 $\pm$ 0.008 & 0.966 $\pm$ 0.005 & 0.878 $\pm$ 0.032 & 0.955 $\pm$ 0.017 \\
+$\Delta$ AP & 0.432 $\pm$ 0.113 & -- & 0.402 $\pm$ 0.032 & -- \\
+$\Delta$ AUROC & -- & 0.166 $\pm$ 0.087 & -- & 0.114 $\pm$ 0.023 \\
+\bottomrule
+\end{tabular}
