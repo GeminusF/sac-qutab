@@ -28,3 +28,7 @@ jobs:
       - run: python -m compileall -q src tests scripts
       - run: python -m sac_qutab validate-config --config configs/core.yaml --campaign configs/sac-campaign-v1.yaml --world-size 1
       - run: python -m pytest -q -p no:cacheprovider
+      - name: Package integrity (available after packaging PR)
+        run: |
+          if [ -f scripts/check_submission.py ]; then python scripts/check_submission.py; fi
+          if [ -f docs/release-manifest.json ]; then python scripts/check_submission.py --complete; fi
