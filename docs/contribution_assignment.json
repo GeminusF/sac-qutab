@@ -1,0 +1,50 @@
+{
+  "status": "AGREED_PUBLICATION_ASSIGNMENT",
+  "members": [
+    [
+      "Farah Feyzullayev",
+      "GeminusF",
+      "Package integration; PR/review templates",
+      "Reproduction entry points and release references",
+      "Training runbook and freeze/resume documentation",
+      "Review narrative consistency",
+      "PRs 1, 6, 11; reviews 5, 9, 13"
+    ],
+    [
+      "Nicat Aghayev",
+      "Nicat-Agayev",
+      "Resource validation; provenance regression; contribution tools",
+      "Data, weights and provenance documentation",
+      "Verify saved-output provenance",
+      "Review experiment explanations",
+      "PRs 2, 7, 12; reviews 1, 10, 14"
+    ],
+    [
+      "Sharaf Feyzullayev",
+      "optim00s",
+      "Environment profiles; report build; CI checks",
+      "Report source and canonical assets",
+      "Check runtime compatibility",
+      "Review model and setup material",
+      "PRs 3, 8, 13; reviews 2, 6, 15"
+    ],
+    [
+      "Milana Karimova",
+      "milanakarimova",
+      "Evidence packaging; report audit",
+      "Claim/evidence mapping; final manuscript QA",
+      "Verify evidence hashes and release inputs",
+      "Review results and limitations",
+      "PRs 4, 9, 14; reviews 3, 7, 11"
+    ],
+    [
+      "Jeyhuna Sevdiyeva",
+      "Jeyhunaa",
+      "Headline replay and release manifest",
+      "Contribution assignment and release checklist",
+      "Replay saved predictions and detector coefficients",
+      "Package supplied presentation PDF",
+      "PRs 5, 10, 15; reviews 4, 8, 12"
+    ]
+  ]
+}
