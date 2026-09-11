@@ -1,0 +1,75 @@
+\documentclass[conference,onecolumn]{IEEEtran}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage{amsmath,amssymb,graphicx,booktabs,array}
+\usepackage{url}
+\usepackage[hidelinks,hypertexnames=false]{hyperref}
+\usepackage{placeins}
+\usepackage{float}
+\usepackage{capt-of}
+\usepackage{multicol}
+% Preserve IEEE conference column geometry while allowing inline wide bands.
+\setlength{\columnsep}{0.25in}
+\setlength{\multicolsep}{6pt}
+\setlength{\intextsep}{7pt}
+\raggedbottom
+\newcommand{\startcolumns}{\begin{multicols}{2}\raggedcolumns}
+\newcommand{\stopcolumns}{\end{multicols}}
+\hypersetup{pdftitle={Semantic Analysis of Counterfactuals: Quality Under Transformations and Adaptive Benchmarking},pdfauthor={Milana Karimova, Sharaf Feyzullayev, Farah Feyzullayev, Jeyhuna Sevdiyeva, Nicat Aghayev}}
+\newcommand{\artifactpath}[1]{\path{#1}}
+\newcommand{\sacauthor}[2]{%
+\begin{minipage}[t]{.31\textwidth}
+\centering
+\textbf{#1}\\[-.2ex]
+{\footnotesize AI Academy,}\\[-.2ex]
+{\footnotesize National Intelligence Center of Azerbaijan}\\[-.2ex]
+{\scriptsize #2}
+\end{minipage}}
+% Course-report branding, not a claim of institutional endorsement.
+\title{\makebox[\textwidth][c]{%
+\makebox[.31\textwidth][c]{\includegraphics[height=9mm,width=.29\textwidth,keepaspectratio]{figures/logos/AZCON_logo.png}}%
+\makebox[.31\textwidth][c]{\includegraphics[height=9mm,width=.29\textwidth,keepaspectratio]{figures/logos/naic_logo.png}}%
+\makebox[.31\textwidth][c]{\includegraphics[height=9mm,width=.29\textwidth,keepaspectratio]{figures/logos/academy_logo.png}}}\\[1.5mm]
+\rule{.96\textwidth}{0.4pt}\\[3mm]
+\makebox[\textwidth][c]{%
+\begin{minipage}[c]{.10\textwidth}
+\centering\includegraphics[height=14mm,width=\linewidth,keepaspectratio]{figures/logos/sac_qutab_logo.png}
+\end{minipage}\hspace{.01\textwidth}%
+\begin{minipage}[c]{.87\textwidth}
+\centering\LARGE Semantic Analysis of Counterfactuals:\\
+Quality Under Transformations and Adaptive Benchmarking
+\end{minipage}}}
+% Team-supplied names/emails; affiliation confirmed by the user.
+\author{%
+\makebox[\textwidth][c]{%
+\sacauthor{Milana Karimova}{milana.karimova25@aiacademy.edu.az}\hfill
+\sacauthor{Sharaf Feyzullayev}{sheref.feyzullayev25@aiacademy.edu.az}\hfill
+\sacauthor{Farah Feyzullayev}{fereh.feyzullayev25@aiacademy.edu.az}}\\[1.4ex]
+\makebox[\textwidth][c]{%
+\sacauthor{Jeyhuna Sevdiyeva}{ceyhune.sevdiyeva25@aiacademy.edu.az}\hspace{.045\textwidth}
+\sacauthor{Nicat Aghayev}{nicat.agayev25@aiacademy.edu.az}}}
+\begin{document}
+\maketitle
+\startcolumns
+\begin{abstract}
+\input{sections/00_abstract.tex}
+\end{abstract}
+\begin{IEEEkeywords}
+Remote sensing, EuroSAT, transformation sensitivity, representation stability, failure detection, reproducibility.
+\end{IEEEkeywords}
+\input{sections/01_introduction.tex}
+\input{sections/02_related_work.tex}
+\input{sections/03_method.tex}
+\input{sections/04_setup.tex}
+\input{sections/05_results.tex}
+\input{sections/06_discussion.tex}
+\input{sections/07_closing.tex}
+\FloatBarrier
+\input{references.tex}
+\label{LastMainPage}
+\stopcolumns
+\clearpage
+\onecolumn
+\appendices
+\input{appendix.tex}
+\end{document}

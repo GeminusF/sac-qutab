@@ -1,0 +1,17 @@
+# Reproducibility {#sec:repro}
+
+The report package contains editable English sections, LaTeX tables, figures, generation scripts, and a ledger linking claims to evidence. Quantitative figures are rebuilt from saved evaluations and statistics. Gallery inputs were recovered from the backup and checked against recorded hashes. The audit links each of the six checkpoints to its evaluation inputs, representation rows, and detector scores. Original evidence, including the historical report index, is preserved.
+
+Reproduction requires different resources at each level. Rebuilding the document uses the supplied LaTeX sources and figure assets. Recomputing the analysis uses the frozen outputs. Repeating the experiment additionally requires raw EuroSAT images, matching pretrained weights, resolved configuration, software environment, training code, and appropriate hardware. The report audit does not certify that every external dependency is present in the project directory. Authenticated manifests and verified retrieval instructions are needed for large binary resources, with licensing and access checked before publication. The report README describes the available inputs and the scope of each script.
+
+The project repository cited in the abstract provides the public reproducibility entry point. The publication release is identified by `v1.0-final`; the historical research baseline remains identified by `sac-campaign-v1-final`. Appendix \ref{app:provenance} provides protocol and configuration identifiers.
+
+# Conclusion
+
+On the tested EuroSAT RGB transformations, neither model has the highest accuracy in every condition. ResNet-50 has higher mean clean accuracy (98.63% versus 96.77%), while ViT-Small/16 retains more accuracy under severe resolution reduction (43.00% versus 12.94%). Prediction and representation stability also describe different responses: a transformed representation can remain close relative to different-class controls while the predicted label changes. Raw cosine and the ECDF percentile make these scales of feature change explicit.
+
+For clean-correct, non-sham pairs, adding normalized representation instability to transformed uncertainty and entropy improves AP and AUROC in all six runs. Mean AP gains are 0.432 for ResNet and 0.402 for ViT. The paired representation feature therefore improves failure ranking beyond the specified output baseline on this benchmark. Extending the conclusion requires evidence about semantic preservation and performance on independent domains.
+
+# Tools and Acknowledgements
+
+The experiment artifacts record use of PyTorch, torchvision, timm, NumPy, SciPy, scikit-learn, Pillow, Matplotlib, and Weights & Biases. OpenAI Codex assisted with source inspection, audit and figure scripts, drafting, language revision, reference checking, and LaTeX preparation. The team supplied author details and affiliation. The authors remain responsible for checking the claims and approving submission. Report preparation involved no human semantic annotation, new training, detector fitting, or full final-test inference. A post-hoc forward pass on the two recorded inputs generated the corrected attention figure described in Appendix \ref{app:attention}.
