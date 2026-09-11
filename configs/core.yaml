@@ -1,0 +1,133 @@
+project:
+  name: SAC-QUTAB
+  track: track1_pure_research
+  output_dir: artifacts
+
+data:
+  root: data/eurosat
+  manifest_relpath: data/manifest.jsonl
+  split_relpath: data/splits.json
+  group_map_path: null
+  grouping_version: content-dhash-bktree-v1
+  near_duplicate_hamming_threshold: 4
+  dataset_version: eurosat-rgb-27000-v1
+  source_url: https://madm.dfki.de/files/sentinel/EuroSAT.zip
+  license: MIT
+  expected_samples: 27000
+  native_size: 64
+  input_size: 224
+  class_names: [AnnualCrop, Forest, HerbaceousVegetation, Highway, Industrial, Pasture, PermanentCrop, Residential, River, SeaLake]
+  split_seed: 20260831
+  split_fractions: {train: 0.60, validation: 0.15, calibration: 0.10, final_test: 0.15}
+  num_workers: 4
+  pin_memory: true
+  horizontal_flip_probability: 0.5
+  vertical_flip_probability: 0.5
+
+experiment:
+  model_presets:
+    - {name: resnet50, timm_model_id: resnet50.tv_in1k, checkpoint_id: timm/resnet50.tv_in1k/model.safetensors, checkpoint_url: "https://huggingface.co/timm/resnet50.tv_in1k/resolve/main/model.safetensors", checkpoint_sha256: 5d061a3c593d795bfe682d9b152bafbcf550579873492def3515b46db1189888, source_num_classes: 1000, source_input_size: 224, pretraining: supervised_imagenet1k, adapter_version: timm-safetensors-v1, learning_rate: 0.0003, representation: pre_logits_global_pool, expected_representation_dim: 2048}
+    - {name: convnext_tiny, timm_model_id: convnext_tiny.fb_in1k, checkpoint_id: timm/convnext_tiny.fb_in1k/model.safetensors, checkpoint_url: "https://huggingface.co/timm/convnext_tiny.fb_in1k/resolve/main/model.safetensors", checkpoint_sha256: 08b9dc9c3a3a29421de7996761e176501896d1ae7fc3085cf56a643772329276, source_num_classes: 1000, source_input_size: 224, pretraining: supervised_imagenet1k, adapter_version: timm-safetensors-v1, learning_rate: 0.0005, representation: pre_logits_global_pool, expected_representation_dim: 768}
+    - {name: vit_small_patch16_224, timm_model_id: vit_small_patch16_224.augreg_in1k, checkpoint_id: timm/vit_small_patch16_224.augreg_in1k/model.safetensors, checkpoint_url: "https://huggingface.co/timm/vit_small_patch16_224.augreg_in1k/resolve/main/model.safetensors", checkpoint_sha256: c20a91d93f4757b0f581519f21ad91a875cf041764873a7a5bccc8e36f360dbf, source_num_classes: 1000, source_input_size: 224, pretraining: supervised_imagenet1k, adapter_version: timm-safetensors-v1, learning_rate: 0.0005, representation: final_normalized_cls, expected_representation_dim: 384}
+    - {name: swin_tiny_patch4_window7_224, timm_model_id: swin_tiny_patch4_window7_224.ms_in1k, checkpoint_id: timm/swin_tiny_patch4_window7_224.ms_in1k/model.safetensors, checkpoint_url: "https://huggingface.co/timm/swin_tiny_patch4_window7_224.ms_in1k/resolve/main/model.safetensors", checkpoint_sha256: fb01861f793143135fa0d6cd97b1631e4b33eaa3ee162bbea9e62de1c76ebac1, source_num_classes: 1000, source_input_size: 224, pretraining: supervised_imagenet1k, adapter_version: timm-safetensors-v1, learning_rate: 0.0005, representation: pre_logits_global_pool, expected_representation_dim: 768}
+    - {name: dinov2_vits14, timm_model_id: vit_small_patch14_dinov2.lvd142m, checkpoint_id: timm/vit_small_patch14_dinov2.lvd142m/model.safetensors, checkpoint_url: "https://huggingface.co/timm/vit_small_patch14_dinov2.lvd142m/resolve/main/model.safetensors", checkpoint_sha256: 04d27f3400d059fc0cfd7d17dd1909a75bf3ea8fb3eeb48b97cb99e57ee20081, source_num_classes: 0, source_input_size: 518, pretraining: self_supervised_lvd142m, adapter_version: timm-dinov2-pos-resample-v1, learning_rate: 0.0001, representation: final_normalized_cls, expected_representation_dim: 384}
+  seeds: [17, 29, 43]
+
+train:
+  device: cuda
+  deterministic: true
+  epochs: 50
+  target_global_batch: 64
+  max_batch_size_per_device: 32
+  optimizer: adamw
+  weight_decay: 0.05
+  label_smoothing: 0.0
+  freeze_backbone: false
+  warmup_epochs: 2
+  min_lr_ratio: 0.01
+  early_stopping_patience: 10
+  min_delta: 0.0001
+  amp_dtype: auto
+  checkpoint_every_steps: 100
+  dry_run_max_samples: 1600
+  dry_run_max_steps: 25
+
+wandb:
+  mode: disabled
+  project: sac-qutab
+  entity: null
+  run_name: null
+  group: core
+  log_interval_steps: 10
+
+distributed:
+  backend: nccl
+  timeout_seconds: 300
+  exact_resume_requires_same_world_size: true
+
+transforms:
+  version: sac-cf-v1
+  seed: 20260831
+  cache_relpath: counterfactuals/cache
+  spectral_sampling: nested_direction_uniform
+  spectral_gain_radii: {mild: 0.05, moderate: 0.10, severe: 0.20}
+  texture_lambdas: {mild: 0.10, moderate: 0.25, severe: 0.40}
+  resolution_sizes: {mild: 48, moderate: 32, severe: 16}
+  reuse_texture_donor_across_severities: true
+  include_identity_sham: true
+
+audit:
+  sampling_seed: 20260831
+  samples_per_class_condition: 10
+  reuse_sources_across_conditions: true
+  reviewer_count: 2
+  pilot_rows: 30
+  kappa_scope: all_final_rows_pre_adjudication
+  disagreement_policy: adjudicate
+  exclusion_granularity: family_severity
+  min_kappa: 0.60
+  min_condition_acceptance_rate: 0.80
+  min_class_acceptance_rate: 0.60
+  confidence_level: 0.95
+
+evaluation:
+  ece_bins: 15
+  rq3_min_positives_per_model_seed: 25
+  pr_summary: average_precision
+  cka_enabled: true
+  representation_normalization: validation_negative_control_ecdf
+
+detector:
+  enabled: true
+  solver: lbfgs
+  penalty: l2
+  regularization_c: 1.0
+  class_weight: null
+  tolerance: 0.0001
+  max_iter: 1000
+
+statistics:
+  bootstrap_samples: 2000
+  confidence_level: 0.95
+  seed: 20260901
+  fdr_q: 0.05
+  primary_familywise_alpha: 0.05
+  model_pair_contrasts:
+    - {left: resnet50, right: convnext_tiny}
+    - {left: resnet50, right: vit_small_patch16_224}
+    - {left: resnet50, right: swin_tiny_patch4_window7_224}
+    - {left: resnet50, right: dinov2_vits14}
+    - {left: convnext_tiny, right: vit_small_patch16_224}
+    - {left: convnext_tiny, right: swin_tiny_patch4_window7_224}
+    - {left: convnext_tiny, right: dinov2_vits14}
+    - {left: vit_small_patch16_224, right: swin_tiny_patch4_window7_224}
+    - {left: vit_small_patch16_224, right: dinov2_vits14}
+    - {left: swin_tiny_patch4_window7_224, right: dinov2_vits14}
+  primary_contrasts: [rq1_label_inconsistency_severe_minus_mild, rq1_js_severe_minus_mild, rq2_normalized_instability_severe_minus_mild, rq2_cross_model_difference_in_differences, rq3_nested_detector_delta_average_precision, rq3_nested_detector_delta_auroc]
+  wilcoxon_metrics: [js_divergence, normalized_representation_instability]
+
+scope:
+  rq4_spatial: false
+  mae: false
+  multispectral: false
+  gamma: false

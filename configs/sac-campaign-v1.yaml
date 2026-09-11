@@ -1,0 +1,23 @@
+schema_version: sac-campaign-v1
+name: sac-campaign-v1
+selected_at: "2026-09-08"
+active_models:
+  - resnet50
+  - vit_small_patch16_224
+seeds: [17, 29, 43]
+model_pair_contrasts:
+  - left: resnet50
+    right: vit_small_patch16_224
+max_device_batch:
+  resnet50: 32
+  vit_small_patch16_224: 32
+base_config_sha256: cc73206d4ff490bebaa9440af5689decd4a93d08038df486dadd8dfe0deb449c
+base_overrides:
+  project.output_dir: /workspace/artifacts
+  data.root: /workspace/data/eurosat
+  data.num_workers: 8
+max_memory_fraction: 0.85
+max_projected_hours_per_seed: 3.0
+supersedes: frozen-five-model operational plan
+legacy_provenance: The five-model base Config is retained unchanged so completed ResNet-50 binaries remain authenticatable.
+rationale: ResNet-50 and ViT-Small/16 provide a capacity-conscious CNN-versus-transformer representation comparison while preserving the frozen data, evaluation, calibration, and detector methodology.

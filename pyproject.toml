@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools==80.9.0", "wheel==0.45.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sac-qutab"
+version = "0.1.0"
+description = "Validity-aware counterfactual evaluation for EuroSAT classifiers"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+  "torch>=2.6.0,<2.14",
+  "torchvision>=0.21.0,<0.29",
+  "numpy==1.26.4",
+  "Pillow==12.3.0",
+  "PyYAML==6.0.3",
+  "scikit-learn==1.9.0",
+  "scipy==1.17.1",
+  "matplotlib==3.11.1",
+  "wandb==0.29.0",
+  "timm==1.0.29",
+  "safetensors==0.8.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==9.0.3"]
+
+[project.scripts]
+sac-qutab = "sac_qutab.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+markers = ["slow: bounded tests that are slower on CPU"]
