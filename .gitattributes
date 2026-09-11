@@ -1,0 +1,2 @@
+# Preserve the frozen submission bytes on every platform, including text-like PDFs.
+* -text

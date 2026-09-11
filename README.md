@@ -4,7 +4,14 @@ A frozen six-run EuroSAT RGB study of prediction, representation, calibration an
 
 ## Install and reproduce headline numbers
 
-Use Python 3.12 in a fresh environment:
+Use source release `v1.0.1-final` (or current `main`) and Python 3.12 in a fresh environment. Repository attributes preserve the hash-pinned file bytes on Windows, Linux and macOS:
+
+```bash
+git clone --branch v1.0.1-final https://github.com/GeminusF/sac-qutab.git
+cd sac-qutab
+```
+
+Create the environment:
 
 ```bash
 python -m venv .venv
@@ -52,7 +59,7 @@ CI runs CPU checks only. GPU training and deployment are not part of CI.
 - [Publication provenance](docs/PUBLICATION.md)
 - [Contribution and review policy](docs/REVIEW_POLICY.md)
 
-Report compilation uses retained `report/figures/` assets and needs no external materials folder. For a full numeric report audit, set `SAC_EVIDENCE_ROOT` to your authenticated full extraction. The original `prepare → freeze → finalize` training protocol and all frozen scientific identifiers remain unchanged.
+Report compilation uses retained `report/figures/` assets and needs no external materials folder. For a full numeric report audit, set `SAC_EVIDENCE_ROOT` to your authenticated full extraction. The original `prepare â†’ freeze â†’ finalize` training protocol and all frozen scientific identifiers remain unchanged.
 
 ## Limitations and contribution record
 
