@@ -118,7 +118,7 @@ def _publication_fixture(tmp_path: Path) -> tuple[Config, list[Path], Path, Path
         atomic_write_json(directory / "provenance.json", provenance)
         write_jsonl(directory / "pair_metrics.jsonl", pair_rows)
         atomic_write_json(directory / "metrics.json", {"clean": {"count": 1, "accuracy": 1.0, "macro_f1": 1.0}, "clean_calibration": {"ece": {"ece": 0.0}, "brier": 0.01, "nll": 0.1}, "conditions": conditions})
-        np.savez_compressed(directory / "representations.npz", original=np.ones((len(pair_rows), 2)), transformed=np.ones((len(pair_rows), 2)))
+        np.savez_compressed(directory / "representations.npz", original=np.full((len(pair_rows), 2), run_names.index(run_name)+1.0), transformed=np.full((len(pair_rows), 2), run_names.index(run_name)+1.0))
         atomic_write_json(directory / "detector_metrics.json", {"models": {}, "condition_prevalence": {"resolution:mild": {"count": 1, "positives": 0, "prevalence": 0.0}}})
         atomic_write_json(directory / "evaluation_index.json", {"schema_version": "sac-evaluation-index-v1", "protocol_sha256": protocol_sha, "provenance_sha256": sha256_file(directory / "provenance.json"), "pair_metrics_sha256": sha256_file(directory / "pair_metrics.jsonl"), "metrics_sha256": sha256_file(directory / "metrics.json"), "representations_sha256": sha256_file(directory / "representations.npz")})
         sources.append({"run": run_name, "provenance_sha256": sha256_file(directory / "provenance.json"), "pairs_sha256": sha256_file(directory / "pair_metrics.jsonl"), "metrics_sha256": sha256_file(directory / "metrics.json"), "representations_sha256": sha256_file(directory / "representations.npz"), "evaluation_index_sha256": sha256_file(directory / "evaluation_index.json"), "detector_sha256": sha256_file(directory / "detector_metrics.json")})
@@ -162,6 +162,8 @@ def test_complete_configured_fifteen_run_report_matrix_passes(tmp_path: Path) ->
     assert result["evaluation_count"] == 15
     index = json.loads((output / "index.json").read_text(encoding="utf-8"))
     assert index["protocol_sha256"] == sha256_file(protocol)
+    for source, directory in zip(index["sources"], directories, strict=True):
+        assert source["representations_sha256"] == sha256_file(directory / "representations.npz")
     assert (output / "detector_metrics.csv").is_file() and (output / "exploratory_bh.csv").is_file()
     assert "bootstrap_seed" in (output / "detector_metrics.csv").read_text(encoding="utf-8").splitlines()[0]
     assert (output / "learning_curves.png").is_file()
