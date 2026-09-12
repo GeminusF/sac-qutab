@@ -1,3 +1,6 @@
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/GeminusF/sac-qutab) &nbsp;
+[![Weights & Biases](https://img.shields.io/badge/Weights%20%26%20Biases-FFBE00?style=flat-square&logo=weightsandbiases&logoColor=000000)](https://wandb.ai/ferehfeyzullayev-impactf/sac-qutab/reports/SAC-Qutab-Project-Summary--VmlldzoxNzkxNjk0NA)
+
 # SAC-QUTAB
 
 A frozen six-run EuroSAT RGB study of prediction, representation, calibration and failure detection: ResNet-50 and ViT-Small/16, seeds 17, 29 and 43.
